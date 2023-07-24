@@ -19,7 +19,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="1200dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/main_tab_layout"
         />
 

@@ -95,31 +95,6 @@ class RecyclerViewFragment() : Fragment() {
         return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecyclerViewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecyclerViewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding=null
-    }
-
     fun controllScroll(recyclerView: RecyclerView, viewPager: ViewPager2){
         // 创建一个RecyclerView.OnItemTouchListener对象
         val itemTouchListener = object : RecyclerView.OnItemTouchListener {
@@ -172,4 +147,31 @@ class RecyclerViewFragment() : Fragment() {
         recyclerView.addOnItemTouchListener(itemTouchListener)
 
     }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment RecyclerViewFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            RecyclerViewFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
+    }
+
+
 }
