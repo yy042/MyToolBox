@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_margin="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="19dp">
+
+
+        <ImageView
+            android:id="@+id/iv_vertical_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_activaterecharge"
+            android:background="@drawable/bg_icon_babyblue"
+            android:padding="9dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="6dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_vertical_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开启自动充值得金豆"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_vertical_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/6"
+                    android:textColor="#5b82ff"
+                    android:textSize="12sp"
+                    android:background="@drawable/bg_number_babyblue"
+                    android:layout_marginLeft="4dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:visibility="invisible"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_vertical_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="首次开启得"
+                    android:textColor="#999999"
+                    android:textSize="12sp"
+                    />
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/ic_bean"
+                    android:layout_marginLeft="1dp"/>
+
+                <TextView
+                    android:id="@+id/tv_vertical_bean_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10金豆"
+                    android:textColor="#f3bb62"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="1dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/btn_vertical_go"
+            android:layout_width="50dp"
+            android:layout_height="24dp"
+            android:text="去开启"
+            android:textColor="#5b82ff"
+            android:textSize="13sp"
+            android:background="@drawable/bg_btn_blue_round_border"
+            android:gravity="center"
+            android:layout_marginRight="12dp"
+            />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"
+        android:layout_marginTop="17dp"/>
+
+
+</LinearLayout>
+
