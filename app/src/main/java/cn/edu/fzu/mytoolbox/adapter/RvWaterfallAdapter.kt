@@ -1,5 +1,6 @@
 package cn.edu.fzu.mytoolbox.adapter
 
+import android.widget.Toast
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.ItemWaterfall
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -32,6 +33,14 @@ class RvWaterfallAdapter(layoutResId: Int, data: MutableList<ItemWaterfall>) : B
             helper.setGone(R.id.tv_waterfall_content,true)
             helper.setGone(R.id.tv_waterfall_icon_rmb,true)
             helper.setGone(R.id.tv_waterfall_monthly,true)
+        }
+
+        // 给item的view设置一个onClickListener
+        helper.itemView.setOnClickListener {
+            // 获取当前item的序号
+            val position = helper.adapterPosition
+            // 弹出一个提示框，内容与item的序号有关
+            Toast.makeText(helper.itemView.context, "您点击了第${position + 1}个item", Toast.LENGTH_SHORT).show()
         }
 
 

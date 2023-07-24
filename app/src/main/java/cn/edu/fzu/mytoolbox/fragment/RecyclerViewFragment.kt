@@ -98,6 +98,7 @@ class RecyclerViewFragment() : Fragment() {
         return binding.root
     }
 
+    //设置滑动响应控制
     fun controllScroll(recyclerView: RecyclerView, viewPager: ViewPager2){
         // 创建一个RecyclerView.OnItemTouchListener对象
         val itemTouchListener = object : RecyclerView.OnItemTouchListener {
