@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_blue"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="15dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_grid_icon"
+        android:layout_width="21dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_mobiledata"/>
+
+    <TextView
+        android:id="@+id/tv_grid_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="充流量"
+        android:textColor="#333333"
+        android:textSize="13sp"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_grid_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="流量告急速订购"
+        android:textColor="#999999"
+        android:textSize="10sp"
+        android:layout_marginTop="3dp"
+        />
+
+
+</LinearLayout>

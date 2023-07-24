@@ -86,7 +86,10 @@ class RecyclerViewFragment() : Fragment() {
                 ItemVertical("看科普视频得金豆", R.drawable.ic_video, "15s得多看多得...","5金豆","去看看"),
                 ItemVertical("开启自动充值得金豆", R.drawable.ic_activaterecharge, "首次开启得","10金豆","去开启"),
                 ItemVertical("看科普视频得金豆", R.drawable.ic_video, "15s得多看多得...","5金豆","去看看"),
-
+                ItemVertical("开启自动充值得金豆", R.drawable.ic_activaterecharge, "首次开启得","10金豆","去开启"),
+                ItemVertical("看科普视频得金豆", R.drawable.ic_video, "15s得多看多得...","5金豆","去看看"),
+                ItemVertical("开启自动充值得金豆", R.drawable.ic_activaterecharge, "首次开启得","10金豆","去开启"),
+                ItemVertical("看科普视频得金豆", R.drawable.ic_video, "15s得多看多得...","5金豆","去看看"),
             ),
             LinearLayoutManager.VERTICAL
         )

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/layout_waterfall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_item_white"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_waterfall_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pic_elderly"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_waterfall_title"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="加装【副卡】，一份套餐全家用"
+                android:textColor="#333333"
+                android:textSize="14sp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="9dp">
+
+                <TextView
+                    android:id="@+id/tv_waterfall_label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赠新人礼包"
+                    android:textColor="#ea5858"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_waterfall_red_label"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_waterfall_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="赠美团神券"
+                    android:textColor="#ea5858"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_waterfall_red_label"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_marginTop="8dp">
+                
+                <TextView
+                    android:id="@+id/tv_waterfall_icon_rmb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="#ea5858"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_waterfall_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="#ea5858"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_waterfall_monthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/月"
+                    android:textColor="#ea5858"
+                    android:textSize="12sp"
+                    />
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

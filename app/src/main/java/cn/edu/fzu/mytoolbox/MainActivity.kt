@@ -3,6 +3,8 @@ package cn.edu.fzu.mytoolbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import cn.edu.fzu.mytoolbox.Util.setStatusBarTextColor
+import cn.edu.fzu.mytoolbox.Util.transparentStatusBar
 import cn.edu.fzu.mytoolbox.adapter.ViewPagerAdapter
 import cn.edu.fzu.mytoolbox.databinding.ActivityMainBinding
 import cn.edu.fzu.mytoolbox.fragment.GridRecyclerViewFragment
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //设置沉浸式状态栏
+        transparentStatusBar(window) //使状态栏背景透明
+        setStatusBarTextColor(window,false)//根据背景色设置状态栏文字颜色
 
         // 创建一个ViewPagerAdapter对象，传入supportFragmentManager和lifecycle
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
