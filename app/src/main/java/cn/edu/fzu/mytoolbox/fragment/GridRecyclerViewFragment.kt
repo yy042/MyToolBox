@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.Util
+import cn.edu.fzu.mytoolbox.util.Util
 import cn.edu.fzu.mytoolbox.adapter.RvGridAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentGridRecyclerViewBinding
-import cn.edu.fzu.mytoolbox.databinding.FragmentRecyclerViewBinding
 import cn.edu.fzu.mytoolbox.entity.ItemHorizontal
 
 // TODO: Rename parameter arguments, choose names that match

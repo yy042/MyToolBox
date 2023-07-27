@@ -1,4 +1,4 @@
-package cn.edu.fzu.mytoolbox
+package cn.edu.fzu.mytoolbox.util
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -59,7 +59,7 @@ object Util {
                 // 获取总数
                 val itemCount = state.itemCount
                 // 计算每个item的左右间距，使得两边对齐，中间间隔为10dp
-                val space = ScreenUtils.dp2px(distance,recyclerView.context)
+                val space = ScreenUtils.dp2px(distance, recyclerView.context)
                 val left = space * (spanCount - position % spanCount) / spanCount
                 val right = space * (position % spanCount + 1) / spanCount
                 // 设置每个item的左右间距，顶部间距为10dp，底部间距为0dp（最后一行除外）
@@ -97,7 +97,7 @@ object Util {
                 // 获取总数
                 val itemCount = state.itemCount
                 // 计算每个item的左右间距，使得两边对齐，中间间隔为10dp
-                val space = ScreenUtils.dp2px(10f,recyclerView.context)
+                val space = ScreenUtils.dp2px(10f, recyclerView.context)
                 val left = space * (spanCount - position % spanCount) / spanCount
                 val right = space * (position % spanCount + 1) / spanCount
                 // 设置每个item的左右间距，顶部间距为10dp，底部间距为0dp（最后一行除外）

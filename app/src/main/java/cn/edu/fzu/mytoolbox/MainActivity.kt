@@ -3,8 +3,8 @@ package cn.edu.fzu.mytoolbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
-import cn.edu.fzu.mytoolbox.Util.setStatusBarTextColor
-import cn.edu.fzu.mytoolbox.Util.transparentStatusBar
+import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
+import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
 import cn.edu.fzu.mytoolbox.adapter.ViewPagerAdapter
 import cn.edu.fzu.mytoolbox.databinding.ActivityMainBinding
 import cn.edu.fzu.mytoolbox.fragment.GridRecyclerViewFragment
