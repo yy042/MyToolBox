@@ -70,7 +70,7 @@ class RecyclerViewFragment() : Fragment() {
             LinearLayoutManager.HORIZONTAL
         )
         //设置滑动响应控制
-        viewPager?.let { controllScroll(binding.rvHorizontal, it) }
+        //viewPager?.let { controllScroll(binding.rvHorizontal, it) }
 
         //垂直RecyclerView
         var rvVerticalAdapter=RvVerticalAdapter(R.layout.item_vertical, mutableListOf())

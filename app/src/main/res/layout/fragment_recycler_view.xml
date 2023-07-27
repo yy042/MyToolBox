@@ -7,7 +7,7 @@
     tools:context=".fragment.RecyclerViewFragment"
     android:padding="10dp">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <cn.edu.fzu.mytoolbox.util.HorizontalRecyclerView
         android:id="@+id/rv_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
