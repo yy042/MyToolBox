@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_btn_blue"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/ic_loading"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_loading"
+        android:layout_marginStart="40dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_check"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_check"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:text="查询余额"
+        android:textColor="#fefefe"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:maxLines="1"
+        app:layout_constraintWidth_default="wrap"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeStepGranularity="1sp"
+        android:layout_marginStart="6dp"
+        app:layout_constraintLeft_toRightOf="@id/ic_loading"
+        app:layout_constraintRight_toLeftOf="@id/ic_reload"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ic_reload"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_change"
+        app:tint="@color/white"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="11dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/tv_check"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

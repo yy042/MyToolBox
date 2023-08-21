@@ -111,6 +111,60 @@ object Util {
 
     }
 
+    //定义一个通用的配置adapter的数据以及和recyclerview绑定的方法
+    @SuppressLint("WrongConstant")
+    fun <T> setupSpacingRecyclerView(
+        context:Context, //传入上下文
+        recyclerView: RecyclerView, //传入recyclerView对象
+        adapter: BaseQuickAdapter<T, BaseViewHolder>, //传入adapter对象
+        dataList: List<T>, //传入数据列表
+        orientation: Int = LinearLayoutManager.HORIZONTAL, //传入布局方向，默认为水平
+        spacingInDp:Int=10 //传入间距设置，默认为5
+    ) {
+        //设置recyclerView的布局管理器
+        val layoutManager = LinearLayoutManager(recyclerView.context, orientation, false)
+        recyclerView.layoutManager = layoutManager
+
+        /* // 调用扩展函数，将dp转换为对应的px值
+         val spacingInPx = spacingInDp.dpToPx(context)
+         // 创建一个CustomSpacingItemDecoration对象，指定间距大小（单位为像素）
+         val itemDecoration = CustomSpacingItemDecoration(spacingInPx)
+
+         // 给RecyclerView添加CustomSpacingItemDecoration对象
+         recyclerView.addItemDecoration(itemDecoration)*/
+
+        // 调用扩展函数，将dp转换为对应的px值
+        val spacingInPx = spacingInDp.dpToPx(context)
+        // 创建一个CustomSpacingItemDecoration对象，指定间距大小（单位为像素）
+        val itemDecoration = ItemSpacingDecoration(spacingInPx)
+
+        // 给RecyclerView添加CustomSpacingItemDecoration对象
+        recyclerView.addItemDecoration(itemDecoration)
+
+        //设置recyclerView的adapter
+        adapter.setList(dataList)
+        recyclerView.adapter = adapter
+
+    }
+
+    // 定义一个扩展函数，将Int类型的dp值转换为Int类型的px值
+    fun Int.dpToPx(context: Context): Int {
+        // 获取当前屏幕的密度
+        val density = context.resources.displayMetrics.density
+
+        // 根据公式 dp * density + 0.5f 来计算px值，并转换为Int类型
+        return (this * density + 0.5f).toInt()
+    }
+
+    // 定义一个扩展函数，将Int类型的dp值转换为Float类型的px值
+    fun Double.dpToPx(context: Context): Double {
+        // 获取当前屏幕的密度
+        val density = context.resources.displayMetrics.density
+
+        // 根据公式 dp * density + 0.5f 来计算px值，并转换为Float类型
+        return this * density + 0.5f
+    }
+
     //将状态栏的背景设置为透明
     fun transparentStatusBar(window: Window) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

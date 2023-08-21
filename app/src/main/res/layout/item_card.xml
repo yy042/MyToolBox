@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/layout_card"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="@drawable/ic_cardbg"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/tv_card_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无门槛"
+            android:textColor="#c88f56"
+            android:textSize="10sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:gravity="center"
+            android:background="@drawable/bg_label_golden"
+            android:layout_marginTop="2dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="爱奇艺"
+            android:textColor="#ff5a59"
+            android:textSize="15sp"
+            android:layout_marginTop="7dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_card_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="会员优惠券"
+            android:textColor="#bb6f42"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/btn_card_go"
+            android:layout_width="61dp"
+            android:layout_height="22dp"
+            android:text="去使用"
+            android:textColor="#ffffff"
+            android:textSize="10sp"
+            android:background="@drawable/bg_btn_orange_red"
+            android:gravity="center"
+            android:layout_marginTop="7dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

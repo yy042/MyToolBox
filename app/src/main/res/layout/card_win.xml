@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:id="@+id/card_win"
+        android:layout_width="97dp"
+        android:layout_height="97dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingVertical="5dp"
+        android:background="@drawable/ic_flip_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCongrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="恭喜您!"
+            android:textColor="#bb6f42"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="翻到了"
+                android:textColor="#bb6f42"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_prize_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="爱奇艺会员"
+                android:textColor="#ff5a59"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优惠券"
+                android:textColor="#bb6f42"
+                android:textSize="6sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_coupon"
+            android:layout_width="71dp"
+            android:layout_height="25dp"
+            android:src="@drawable/pic_coupon_iqy_5r"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/btn_card_use"
+            android:layout_width="56dp"
+            android:layout_height="13dp"
+            android:background="@drawable/bg_btn_orange_red_reflect"
+            android:gravity="center"
+            android:text="去使用"
+            android:textColor="#ffffff"
+            android:textSize="5sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已发放至[我的奖品]"
+            android:textColor="#999999"
+            android:textSize="4sp"
+            android:layout_marginTop="3dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

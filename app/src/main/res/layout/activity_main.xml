@@ -2,28 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="720dp"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/main_tab_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvRvActivity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_view_pager"
+        android:text="1. 多种RecyclerView的使用"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@id/tvRechargeSuccessActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="#2A82E4"
-        app:tabMaxWidth="0dp"
-        app:tabTextColor="@color/black" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/main_view_pager"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvRechargeSuccessActivity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/main_tab_layout"
-        />
+        android:text="2. 充值成功页面"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRvActivity" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

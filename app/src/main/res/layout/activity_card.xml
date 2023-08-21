@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardActivity"
+    android:background="@color/half_transparent">
+
+    <ImageView
+        android:id="@+id/card_ray"
+        android:layout_width="700dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:scaleX="0"
+        android:src="@drawable/ic_flip_card_ray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/card"
+        android:layout_width="145.5dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_flip_card"
+        android:transitionName="card"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/card_lose"
+        android:layout_width="291dp"
+        android:layout_height="291dp"
+        android:src="@drawable/ic_flip_card_lose"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/card_win"
+        android:layout_width="291dp"
+        android:layout_height="291dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingVertical="15dp"
+        android:background="@drawable/bg_card_win"
+        android:layout_marginTop="14dp"
+        android:transitionGroup="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_congrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="恭喜您!"
+            android:textColor="#bb6f42"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:id="@+id/layout_coupon_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="翻到了"
+                android:textColor="#bb6f42"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_prize_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="爱奇艺会员"
+                android:textColor="#ff5a59"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优惠券"
+                android:textColor="#bb6f42"
+                android:textSize="19sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_coupon"
+            android:layout_width="215dp"
+            android:layout_height="75dp"
+            android:src="@drawable/pic_coupon_iqy_5r"
+            android:layout_marginTop="22dp"/>
+
+        <TextView
+            android:id="@+id/btn_card_use"
+            android:layout_width="170dp"
+            android:layout_height="39dp"
+            android:background="@drawable/bg_btn_orange_red_reflect"
+            android:gravity="center"
+            android:text="去使用"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:layout_marginTop="31dp"/>
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已发放至[我的奖品]"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_marginTop="11dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:src="@drawable/ic_close_card"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_win" />
+
+    <ImageView
+        android:id="@+id/iv_cheer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

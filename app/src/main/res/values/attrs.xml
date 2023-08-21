@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconTextView">
+        <attr name="icLoadingSrc" format="reference" />
+        <attr name="icLoadingSize" format="dimension" />
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+
+    <!-- 定义一个属性表，名称为MarqueeTextSwitcher -->
+    <declare-styleable name="MyTextSwitcherStyle">
+        <!--字体大小-->
+        <attr name="textSize" format="dimension" />
+        <!--字体颜色-->
+        <attr name="mqtextColor" format="reference|color" />
+        <!--最多显示的行数-->
+        <attr name="maxLines" format="integer" min="0" />
+        <!--字体超出后的效果-->
+        <attr name="ellipsize">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+        <!--文字样式-->
+        <attr name="textStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <!--动画的方向-->
+        <attr name="animDirection">
+            <enum name="bottom2top" value="0"></enum>
+            <enum name="top2bottom" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <!-- 定义一个自定义标题栏View的属性集合 -->
+    <declare-styleable name="ImmersiveToolbar">
+        <!-- 定义一个标题文本的属性，类型为字符串，可以在布局文件中设置 -->
+        <attr name="titleText" format="string" />
+        <attr name="iconBackWidth" format="dimension" />
+        <attr name="verticalPadding" format="dimension" />
+        <attr name="horizontalPadding" format="dimension" />
+        <attr name="statusBarColor" format="color" />
+        <attr name="statusBarDarkFont" format="boolean" />
+    </declare-styleable>
+
+    <!-- 定义一个自定义刮刮卡View的属性集合 -->
+    <declare-styleable name="ScratchCard">
+        <attr name="srcResult" format="reference" />
+        <attr name="srcFront" format="reference" />
+    </declare-styleable>
+</resources>
