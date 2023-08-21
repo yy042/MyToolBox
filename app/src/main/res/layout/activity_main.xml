@@ -12,6 +12,10 @@
         android:layout_height="wrap_content"
         android:text="1. 多种RecyclerView的使用"
         android:textSize="24dp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_btn_blue"
+        android:padding="20dp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/tvRechargeSuccessActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,15 +23,18 @@
 
     <TextView
         android:id="@+id/tvRechargeSuccessActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_blue"
+        android:padding="20dp"
         android:text="2. 充值成功页面"
+        android:textColor="@color/white"
         android:textSize="24dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvRvActivity"
+        app:layout_constraintStart_toStartOf="@+id/tvRvActivity"
         app:layout_constraintTop_toBottomOf="@+id/tvRvActivity" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

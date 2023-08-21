@@ -1,6 +1,5 @@
 package cn.edu.fzu.mytoolbox.util
 
-// 导入必要的库
 import android.app.Activity
 import android.content.Context
 import android.graphics.Rect

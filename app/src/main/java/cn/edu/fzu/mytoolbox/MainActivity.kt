@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         binding.tvRvActivity.setOnClickListener {
             val intent = Intent(this, RecyclerViewActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0 , 0)
         }
 
         binding.tvRechargeSuccessActivity.setOnClickListener {
             val intent = Intent(this, RechargeSuccessActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0 , 0)
         }
 
     }

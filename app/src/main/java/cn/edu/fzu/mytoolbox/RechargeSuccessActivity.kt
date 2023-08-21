@@ -177,7 +177,7 @@ class RechargeSuccessActivity : AppCompatActivity() {
         binding.layoutMarqueeHint.setViewList(views)
 
         //设置textSwitcher
-        // 创建一个数据列表
+    /*    // 创建一个数据列表
         val messages = listOf(
             "《赋得古原草送别》《赋得古原草送别》《赋得古原草送别》《赋得古原草送别》《赋得古原草送别》《赋得古原草送别》",
             "离离原上草，一岁一枯荣。",
@@ -190,7 +190,7 @@ class RechargeSuccessActivity : AppCompatActivity() {
         //二、开始滚动
         marqueeView.startScroll()
         //或者定义刷新的时间
-        marqueeView.startScroll(8000)
+        marqueeView.startScroll(8000)*/
     }
 
     private fun inflateView(

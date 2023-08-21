@@ -245,38 +245,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
-                android:id="@+id/layout_marquee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp"
-                android:padding="8dp"
-                android:background="@drawable/bg_btn_white"
-                app:layout_constraintTop_toBottomOf="@id/layout_rechargehint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_beans"
-                    android:layout_marginLeft="2dp"/>
-
-                <cn.edu.fzu.mytoolbox.util.MyTextSwitcher
-                    android:id="@+id/marqueeView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:animDirection="bottom2top"
-                    app:ellipsize="marquee"
-                    app:maxLines="2"
-                    app:mqtextColor="@color/black"
-                    app:textSize="13sp"
-                    app:textStyle="normal"/>
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/layout_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -284,7 +252,7 @@
                 android:background="@drawable/bg_btn_white"
                 android:layout_marginTop="15dp"
                 android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/layout_marquee"
+                app:layout_constraintTop_toBottomOf="@id/layout_rechargehint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
