@@ -14,10 +14,6 @@ class ItemSpacingDecoration(private val spacing: Int) : RecyclerView.ItemDecorat
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val position = parent.getChildAdapterPosition(view)
         val itemCount = state.itemCount
-        val itemWidth = view.getMeasuredWidth()
-        val itemHeight = view.getMeasuredHeight()
-        // 用宽度除以高度，得到item的宽高比
-        val itemAspectRatio = itemWidth.toFloat() / itemHeight.toFloat()
 
         val parentWidth3=parent.measuredWidth
         println("parentWidth3 is $parentWidth3")

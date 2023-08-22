@@ -12,8 +12,6 @@
         android:background="@drawable/bg_item_white"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_margin="5dp"
         >
 
         <ImageView
@@ -26,14 +24,14 @@
             />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_waterfall_title"
-                android:layout_width="140dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="加装【副卡】，一份套餐全家用"
                 android:textColor="#333333"
@@ -68,11 +66,8 @@
                     android:textColor="#ea5858"
                     android:textSize="11sp"
                     android:background="@drawable/bg_waterfall_red_label"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="3dp"/>
 
             </LinearLayout>
             

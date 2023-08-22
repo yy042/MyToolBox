@@ -11,6 +11,7 @@ import cn.edu.fzu.mytoolbox.fragment.WaterfallFragment
 import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
 import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.gyf.immersionbar.ImmersionBar
 
 // 定义一个顶层变量
 var viewPager: ViewPager2? = null
@@ -25,8 +26,9 @@ class RecyclerViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //设置沉浸式状态栏
-        transparentStatusBar(window) //使状态栏背景透明
-        setStatusBarTextColor(window,false)//根据背景色设置状态栏文字颜色
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true) //设置状态栏字体为深色
+            .init()
 
         // 创建一个ViewPagerAdapter对象，传入supportFragmentManager和lifecycle
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)

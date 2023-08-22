@@ -24,4 +24,23 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <!--ActivityTheme-->
+    <style name="ActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--不设置窗口透明，进入动画会现有个黑屏的过程-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置窗口的动画样式-->
+        <item name="android:windowAnimationStyle">@style/InOutAnim</item>
+    </style>
+
+    <style name="InOutAnim" parent="@android:style/Animation.Activity">
+        <!--打开时新Activity动画方式-->
+        <item name="android:activityOpenEnterAnimation">@anim/translate_in</item>
+        <!--打开时旧Activity动画方式-->
+        <item name="android:activityOpenExitAnimation">@anim/translate_out</item>
+        <!--关闭时新Activity动画方式-->
+        <item name="android:activityCloseEnterAnimation">@anim/translate_in</item>
+        <!--关闭时旧Activity动画方式-->
+        <item name="android:activityCloseExitAnimation">@anim/translate_out</item>
+    </style>
+
 </resources>

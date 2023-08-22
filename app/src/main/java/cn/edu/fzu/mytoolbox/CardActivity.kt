@@ -288,7 +288,6 @@ class CardActivity : AppCompatActivity() {
         binding.btnCardUse.setOnClickListener {
             val intent = Intent(this, DrawActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(0 , 0)
         }
 
     }

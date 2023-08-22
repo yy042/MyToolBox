@@ -18,9 +18,11 @@ import cn.edu.fzu.mytoolbox.entity.ItemTask
 import cn.edu.fzu.mytoolbox.entity.ItemWaterfall
 import cn.edu.fzu.mytoolbox.util.ImmersiveToolbar
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
+import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
 import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
 import cn.edu.fzu.mytoolbox.util.Util.setupSpacingRecyclerView
 import cn.edu.fzu.mytoolbox.util.Util.setupWaterfall
+import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
 
 class RechargeSuccessActivity : AppCompatActivity() {
 

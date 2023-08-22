@@ -91,22 +91,14 @@ object Util {
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(rect: Rect, view: View, recyclerView: RecyclerView, state: RecyclerView.State) {
                 // 获取当前item的位置
-                val position = recyclerView.getChildAdapterPosition(view)
-                // 获取列数
-                val spanCount = layoutManager.spanCount
-                // 获取总数
-                val itemCount = state.itemCount
-                // 计算每个item的左右间距，使得两边对齐，中间间隔为10dp
-                val space = ScreenUtils.dp2px(10f, recyclerView.context)
-                val left = space * (spanCount - position % spanCount) / spanCount
-                val right = space * (position % spanCount + 1) / spanCount
-                // 设置每个item的左右间距，顶部间距为10dp，底部间距为0dp（最后一行除外）
-                rect.left = left
-                rect.right = right
-                rect.top = space
-                rect.bottom = if (position / spanCount == itemCount / spanCount) space else 0 // 如果是最后一行，则设置底部间距为10dp，否则为0dp
+                //val position = recyclerView.getChildAdapterPosition(view)
+                // 计算每个item的左右间距，使得间隔为5dp
+                val space = 5.dpToPx(recyclerView.context)
+                rect.left = space
+                rect.right = space
+                rect.top = 0
+                rect.bottom = 10.dpToPx(recyclerView.context) // 如果是最后一行，则设置底部间距为10dp，否则为0dp
             }
-
         })
 
     }
