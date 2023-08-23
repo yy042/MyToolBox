@@ -1,16 +1,10 @@
 package cn.edu.fzu.mytoolbox.util
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
-import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.databinding.ScratchCardBinding
