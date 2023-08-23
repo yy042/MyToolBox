@@ -163,8 +163,10 @@ class ScratchCard @JvmOverloads constructor(
                 // 调用接口方法，通知父布局隐藏按钮
                 mOnScratchListener?.onScratch()
                 //首次触碰刮刮卡时，隐藏前景以及设为可刮
-                if(binding.scratchFront.visibility == View.VISIBLE) binding.scratchFront.visibility = View.GONE
-                if(!isScratchable) isScratchable = true
+                if(binding.scratchFront.visibility == View.VISIBLE) {
+                    binding.scratchFront.visibility = View.GONE
+                    isScratchable = true
+                }
             }
             MotionEvent.ACTION_MOVE -> {
                 // 请求父布局不要拦截事件，让自定义刮卡类处理事件
