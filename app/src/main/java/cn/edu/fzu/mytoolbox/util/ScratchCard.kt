@@ -26,7 +26,7 @@ class ScratchCard @JvmOverloads constructor(
     private var mSrcFront: Bitmap
     private lateinit var mDstBitmap: Bitmap
     private val mPaint: Paint
-    private lateinit var mPath: Path
+    private var mPath: Path
     private var mStartX: Float = 0f
     private var mStartY: Float = 0f
 
@@ -58,6 +58,8 @@ class ScratchCard @JvmOverloads constructor(
         mPaint.isAntiAlias = true // 抗锯齿
         mPaint.strokeWidth = 30f
 
+        mPath = Path()
+
         // 从XML属性获取drawable资源id
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScratchCard)
         srcResultId = typedArray.getResourceId(R.styleable.ScratchCard_srcResult, R.drawable.pic_scratch_win)
@@ -69,6 +71,7 @@ class ScratchCard @JvmOverloads constructor(
             BitmapFactory.decodeResource(resources, srcResultId)
         mSrcFront =
             BitmapFactory.decodeResource(resources, srcFrontId)
+
         // 遮盖刮刮卡的前景图也要设置
         binding.scratchFront.setImageResource(srcFrontId)
         //必须给view设置与前景图一样的背景，否则无法绘制
@@ -98,14 +101,13 @@ class ScratchCard @JvmOverloads constructor(
             bitmapHeight,
             true
         ) // 将图片缩放（实际上是裁剪）到指定大小
-
+        // 创建透明位图
         mDstBitmap = Bitmap.createBitmap(
             mSrcFront.width,
             mSrcFront.height,
             Bitmap.Config.ARGB_8888
         )
-        mPath = Path()
-
+        // 设置View测量后的宽度和高度，并传递给父类方法
         setMeasuredDimension(bitmapWidth, bitmapHeight)
     }
 
@@ -152,6 +154,9 @@ class ScratchCard @JvmOverloads constructor(
                 // 请求父布局不要拦截事件，让自定义刮卡类处理事件
                 // 事件拦截：谁拦截，谁处理
                 parent.requestDisallowInterceptTouchEvent(true)
+                // 将 Path 对象移动到按下的坐标点
+                mPath.moveTo(event.x, event.y)
+
                 mStartX = event.x
                 mStartY = event.y
                 // 调用接口方法，通知父布局隐藏按钮
@@ -166,16 +171,17 @@ class ScratchCard @JvmOverloads constructor(
                 // 请求父布局不要拦截事件，让自定义刮卡类处理事件
                 // 事件拦截：谁拦截，谁处理
                 parent.requestDisallowInterceptTouchEvent(true)
-                val endX = event.x
-                val endY = event.y
-                // 如果可以刮卡，就更新手指轨迹
-                if (isScratchable) {
-                    mPath.moveTo(mStartX, mStartY)
-                    mPath.lineTo(endX, endY)
+                // 计算起始点和当前点的中点作为终点
+                val endX = (mStartX + event.x) / 2
+                val endY = (mStartY + event.y) / 2
+                // 使用 quadTo() 方法在 Path 对象上添加一段二次贝塞尔曲线，控制点为起始点，终点为中点
+                if(isScratchable){
+                    mPath.quadTo(mStartX, mStartY, endX, endY)
                     invalidate()
                 }
-                mStartX = endX
-                mStartY = endY
+                // 更新起始点为当前点
+                mStartX = event.x
+                mStartY = event.y
             }
             // 其他类型的动作不做处理
             else -> {
