@@ -136,7 +136,7 @@ class RechargeSuccessActivity : AppCompatActivity() {
    */
 
         //设置Waterfall
-        rvWaterfallAdapter= RvWaterfallAdapter(R.layout.item_waterfall,mutableListOf())
+      /*  rvWaterfallAdapter= RvWaterfallAdapter(R.layout.item_waterfall,mutableListOf())
         setupWaterfall(
             binding.rvWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,
@@ -146,7 +146,7 @@ class RechargeSuccessActivity : AppCompatActivity() {
                 ItemWaterfall("免运费", "送配件","iPhone12 128GB 红色 双卡双待","300",R.drawable.pic_iphone),
                 ItemWaterfall("赠新人礼包", "0","15GB定向流量+腾讯视频月会员卡","10",R.drawable.pic_tencentvip)
             )
-        )
+        )*/
 
         //测试文字自适应
         binding.etTest.addTextChangedListener(object : TextWatcher {
@@ -193,9 +193,6 @@ class RechargeSuccessActivity : AppCompatActivity() {
         marqueeView.startScroll()
         //或者定义刷新的时间
         marqueeView.startScroll(8000)*/
-
-        // 通过gson解析json字符串
-        val feedTabData = parseJsonFromFile("tab.json")
     }
 
     private fun inflateView(
@@ -221,27 +218,6 @@ class RechargeSuccessActivity : AppCompatActivity() {
         viewDesc.text = desc
         return view
     }
-
-    fun parseJsonFromFile(fileName:String): GetFeedTabData {
-        val gson = Gson()
-        val json = readJsonFile(fileName) // 调用函数读取本地json文件并获取其内容
-        val tabList = gson.fromJson(json, GetFeedTabData::class.java)
-        return tabList
-    }
-
-    fun readJsonFile(fileName:String): String {
-        val inputStream = assets.open(fileName)
-        val reader = BufferedReader(InputStreamReader(inputStream))
-        val stringBuilder = StringBuilder()
-        var line: String? = reader.readLine()
-        while (line != null) {
-            stringBuilder.append(line)
-            line = reader.readLine()
-        }
-        reader.close()
-        return stringBuilder.toString()
-    }
-
 
     // Override the onActivityResult method
 /*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

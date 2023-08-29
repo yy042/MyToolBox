@@ -3,7 +3,7 @@
         {
             "tabName": "推荐",
             "tabIcon": "",
-            "redFlag": "",
+            "redFlag": "1",
             "timestamp": "20230427152925",
             "tabType": "1",
             "order": "1",

@@ -139,7 +139,6 @@ object Util {
 
     }
 
-
     // 定义一个扩展函数，将Int类型的dp值转换为Int类型的px值
     fun Int.dpToPx(context: Context): Int {
         // 获取当前屏幕的密度
