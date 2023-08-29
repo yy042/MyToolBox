@@ -12,10 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.edu.fzu.mytoolbox.adapter.*
 import cn.edu.fzu.mytoolbox.databinding.ActivityRechargeSuccessBinding
-import cn.edu.fzu.mytoolbox.entity.ItemRecommend
-import cn.edu.fzu.mytoolbox.entity.ItemService
-import cn.edu.fzu.mytoolbox.entity.ItemTask
-import cn.edu.fzu.mytoolbox.entity.ItemWaterfall
+import cn.edu.fzu.mytoolbox.entity.*
 import cn.edu.fzu.mytoolbox.util.ImmersiveToolbar
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
@@ -23,6 +20,9 @@ import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
 import cn.edu.fzu.mytoolbox.util.Util.setupSpacingRecyclerView
 import cn.edu.fzu.mytoolbox.util.Util.setupWaterfall
 import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
+import com.google.gson.Gson
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class RechargeSuccessActivity : AppCompatActivity() {
 
@@ -193,6 +193,9 @@ class RechargeSuccessActivity : AppCompatActivity() {
         marqueeView.startScroll()
         //或者定义刷新的时间
         marqueeView.startScroll(8000)*/
+
+        // 通过gson解析json字符串
+        val feedTabData = parseJsonFromFile("tab.json")
     }
 
     private fun inflateView(
@@ -217,6 +220,26 @@ class RechargeSuccessActivity : AppCompatActivity() {
         viewName.ellipsize = TextUtils.TruncateAt.MARQUEE
         viewDesc.text = desc
         return view
+    }
+
+    fun parseJsonFromFile(fileName:String): GetFeedTabData {
+        val gson = Gson()
+        val json = readJsonFile(fileName) // 调用函数读取本地json文件并获取其内容
+        val tabList = gson.fromJson(json, GetFeedTabData::class.java)
+        return tabList
+    }
+
+    fun readJsonFile(fileName:String): String {
+        val inputStream = assets.open(fileName)
+        val reader = BufferedReader(InputStreamReader(inputStream))
+        val stringBuilder = StringBuilder()
+        var line: String? = reader.readLine()
+        while (line != null) {
+            stringBuilder.append(line)
+            line = reader.readLine()
+        }
+        reader.close()
+        return stringBuilder.toString()
     }
 
 

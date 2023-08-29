@@ -1,0 +1,103 @@
+{
+    "tabList": [
+        {
+            "tabName": "推荐",
+            "tabIcon": "",
+            "redFlag": "",
+            "timestamp": "20230427152925",
+            "tabType": "1",
+            "order": "1",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "1",
+            "subTitle": "大家在看"
+        },
+        {
+            "tabName": "百度",
+            "tabIcon": "",
+            "redFlag": "",
+            "timestamp": "20230427152943",
+            "tabType": "1",
+            "order": "2",
+            "link": "https://www.baidu.com/",
+            "linkType": "",
+            "type": "2",
+            "isDefault": "",
+            "subTitle": "最新动态"
+        },
+        {
+            "tabName": "商城",
+            "tabIcon": "",
+            "redFlag": "",
+            "timestamp": "20230427153051",
+            "tabType": "1",
+            "order": "4",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "0",
+            "subTitle": "3C数码"
+        },
+        {
+            "tabName": "视频",
+            "tabIcon": "",
+            "redFlag": "0",
+            "timestamp": "20230427153129",
+            "tabType": "1",
+            "order": "5",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "0",
+            "subTitle": "高清影视"
+        },
+        {
+            "tabName": "彩铃",
+            "tabIcon": "",
+            "redFlag": "0",
+            "timestamp": "20230510142539",
+            "tabType": "1",
+            "order": "6",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "0",
+            "subTitle": "视频彩铃"
+        },
+        {
+            "tabName": "直播",
+            "tabIcon": "",
+            "redFlag": "0",
+            "timestamp": "20230711142241",
+            "tabType": "1",
+            "order": "8",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "0",
+            "subTitle": "精彩直播"
+        },
+        {
+            "tabName": "二手",
+            "tabIcon": "",
+            "redFlag": "0",
+            "timestamp": "20230619170238",
+            "tabType": "1",
+            "order": "9",
+            "link": "",
+            "linkType": "",
+            "type": "1",
+            "isDefault": "0",
+            "subTitle": "手机换新"
+        }
+    ],
+    "jumpGuideBar": {
+        "title": "更多精彩等你发现",
+        "iconUrl": "https://w.189.cn/bigdata/2023/5/8/111683532549514962.png",
+        "provinceCode": "1000000037",
+        "recommender": "cc-010001002000.rmc-hg_cxbl_fc.fd-2.od-1.eoc-0517500057",
+        "sceneId": "hg_cxbl_fc##2786##default##0517500057##010001002000##3##N##16347400001##1##N##N##05175"
+    },
+    "isShowSubTitle": "2"
+}

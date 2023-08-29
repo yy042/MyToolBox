@@ -4,8 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import cn.edu.fzu.mytoolbox.databinding.ActivityMainBinding
-import cn.edu.fzu.mytoolbox.util.Util
+import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
+import cn.edu.fzu.mytoolbox.entity.GetFeedTabData.TabListBean
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.gyf.immersionbar.ImmersionBar
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RechargeSuccessActivity::class.java)
             startActivity(intent)
         }
+
 
     }
 
