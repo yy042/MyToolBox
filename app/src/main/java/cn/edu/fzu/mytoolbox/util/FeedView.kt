@@ -3,12 +3,14 @@ package cn.edu.fzu.mytoolbox.util
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.transition.Transition
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import cn.edu.fzu.mytoolbox.databinding.ViewFeedBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
@@ -49,7 +51,20 @@ class FeedView (context: Context, attrs: AttributeSet) :
                 }
                 "2" -> {
                     // 设置tabItem的icon属性为tabIcon，如果是网络图片，可以使用Glide或其他图片加载库加载
-                    tabItem.icon = getDrawableFromUrl(tab.tabIcon)
+                    // 创建一个后台线程来执行Glide的同步方法
+                    Thread(Runnable {
+                        try {
+                            // 使用Glide的submit方法来返回一个Future对象，表示图片加载的结果
+                            val future = Glide.with(context).load(tab.tabIcon).submit()
+                            // 使用Future对象的get方法来获取一个Drawable对象，表示图片本身
+                            val drawable = future.get()
+                            // 在后台线程上设置图标
+                            tabItem.icon = drawable
+                        } catch (e: Exception) {
+                            // 处理可能发生的异常，例如网络错误，图片格式错误等
+                            e.printStackTrace()
+                        }
+                    }).start()
                 }
             }
             // 根据redFlag设置tabItem是否显示红点，0否 1是
@@ -98,11 +113,6 @@ class FeedView (context: Context, attrs: AttributeSet) :
     }
 
     // 定义一些辅助方法，用于实现上述的逻辑，这里只是简单的示例，具体的实现可以根据需求修改
-    private fun getDrawableFromUrl(url: String): Drawable {
-        // 使用Glide或其他图片加载库加载网络图片，并返回一个Drawable对象
-        return Glide.with(context).load(url).submit().get()
-    }
-
     private fun showFeedList(order: String) {
         // 使用RecyclerView或其他列表控件显示feed流原生列表，并传入order作为查询参数
     }

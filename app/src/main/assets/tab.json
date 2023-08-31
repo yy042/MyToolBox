@@ -2,10 +2,10 @@
     "tabList": [
         {
             "tabName": "推荐",
-            "tabIcon": "",
+            "tabIcon": "https://w.189.cn/bigdata/2023/5/8/111683532549514962.png",
             "redFlag": "1",
             "timestamp": "20230427152925",
-            "tabType": "1",
+            "tabType": "2",
             "order": "1",
             "link": "",
             "linkType": "",
