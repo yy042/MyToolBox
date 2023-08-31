@@ -4,7 +4,11 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import cn.edu.fzu.mytoolbox.R
+import cn.edu.fzu.mytoolbox.databinding.TabCustomBinding
 import cn.edu.fzu.mytoolbox.databinding.ViewFeedBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
@@ -31,21 +35,24 @@ class FeedView (context: Context, attrs: AttributeSet) :
         tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
-/*
-        val tabItemBinding=TabCustomBinding.inflate(LayoutInflater.from(context))
-        val tabIcon = tabItemBinding.tabIcon
-        val tabName = tabItemBinding.tabName
-*/
-
-        // 遍历tabList，为每个TabListBean对象创建一个对应的TabItem，并添加到TabLayout中
+      // 遍历tabList，为每个TabListBean对象创建一个对应的TabItem，并添加到TabLayout中
         for (tab in tabList) {
             // 创建一个TabLayout.Tab对象
             val tabItem = tabLayout.newTab()
             // 根据tabType设置tabItem的显示类型，1：显示标题 2：显示图标
             when (tab.tabType) {
                 "1" -> {
-                    // 设置tabItem的text属性为tabName
-                    tabItem.text = tab.tabName
+                    // 加载自定义视图的布局文件
+                    val view = LayoutInflater.from(context).inflate(R.layout.tab_custom, null)
+                    // 获取视图中的TextView组件
+                    val textView = view.findViewById<TextView>(R.id.tabName)
+                    // 隐藏tabIcon
+                    val ivTabIcon = view.findViewById<ImageView>(R.id.tabIcon)
+                    ivTabIcon.visibility = GONE
+                    // 设置TextView的text属性为tabName
+                    textView.text = tab.tabName
+                    // 设置tabItem的自定义视图为view
+                    tabItem.customView = view
                 }
                 "2" -> {
                     // 设置tabItem的icon属性为tabIcon，如果是网络图片，可以使用Glide或其他图片加载库加载
@@ -57,7 +64,24 @@ class FeedView (context: Context, attrs: AttributeSet) :
                             // 使用Future对象的get方法来获取一个Drawable对象，表示图片本身
                             val drawable = future.get()
                             // 在后台线程上设置图标
-                            tabItem.icon = drawable
+                            // tabItem.icon = drawable
+
+                            // 使用自定义视图来设置图标
+                            // 加载自定义视图的布局文件
+                            val view = LayoutInflater.from(context).inflate(R.layout.tab_custom, null)
+                            // 获取视图中的ImageView组件
+                            val ivTabIcon = view.findViewById<ImageView>(R.id.tabIcon)
+                            // 隐藏tabName
+                            val ivTabText = view.findViewById<TextView>(R.id.tabName)
+                            ivTabText.visibility= GONE
+                            // 设置ImageView的drawable属性为图标
+                            ivTabIcon.setImageDrawable(drawable)
+                            // 设置ImageView的scaleType属性为fitCenter或centerInside
+                            ivTabIcon.scaleType = ImageView.ScaleType.FIT_CENTER
+                            // 设置ImageView的layout_height属性为25dp或其他合适的值
+                            ivTabIcon.layoutParams.height = 22.dpToPx(context)
+                            // 设置tabItem的自定义视图为view
+                            tabItem.customView = view
                         } catch (e: Exception) {
                             // 处理可能发生的异常，例如网络错误，图片格式错误等
                             e.printStackTrace()
@@ -100,9 +124,39 @@ class FeedView (context: Context, attrs: AttributeSet) :
                         showFollowPage(selectedTab.tagList)
                     }
                 }
+
+                // 获取tabItem的自定义视图
+                val view = tab.customView
+                // 如果自定义视图不为空
+                if (view != null) {
+                    // 获取视图中的TextView组件
+                    val textView = view.findViewById<TextView>(R.id.tabName)
+                    // 如果TextView不为空
+                    if (textView != null) {
+                        // 将TextView的textSize设置为17sp
+                        textView.textSize = 17f
+                        // 将TextView的textColor设置为黑色
+                        textView.setTextColor(Color.BLACK)
+                    }
+                }
+
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 // 当某个tab取消选中时，可以做一些清理或回收的操作
+                // 获取tabItem的自定义视图
+                val view = tab.customView
+                // 如果自定义视图不为空
+                if (view != null) {
+                    // 获取视图中的TextView组件
+                    val textView = view.findViewById<TextView>(R.id.tabName)
+                    // 如果TextView不为空
+                    if (textView != null) {
+                        // 将TextView的textSize设置为17sp
+                        textView.textSize = 16f
+                        // 将TextView的textColor设置为黑色
+                        textView.setTextColor(Color.GRAY)
+                    }
+                }
             }
 
             override fun onTabReselected(tab: TabLayout.Tab) {
