@@ -16,8 +16,10 @@
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="#2A82E4"
-        app:tabMaxWidth="0dp"
+        app:tabIndicator="@drawable/tab_indicator_blue_straight"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorColor="#1990ff"
         app:tabTextColor="@color/black"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
 

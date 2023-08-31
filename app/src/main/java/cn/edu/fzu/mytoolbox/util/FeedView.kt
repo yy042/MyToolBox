@@ -2,15 +2,13 @@ package cn.edu.fzu.mytoolbox.util
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.transition.Transition
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import cn.edu.fzu.mytoolbox.databinding.ViewFeedBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
+import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
@@ -73,6 +71,8 @@ class FeedView (context: Context, attrs: AttributeSet) :
                 // 要使用安卓原生的badgeDrawable的话，必须将应用主题设置为继承自Theme.MaterialComponents的主题或其子类
                 val badgeDrawable = tabItem.orCreateBadge
                 badgeDrawable.badgeGravity= BadgeDrawable.TOP_END
+                badgeDrawable.verticalOffset= 2.dpToPx(context)
+                badgeDrawable.horizontalOffset = -2.5.dpToPx(context).toInt()
                 badgeDrawable.backgroundColor = Color.RED
             }
 

@@ -16,7 +16,7 @@
         {
             "tabName": "百度",
             "tabIcon": "",
-            "redFlag": "",
+            "redFlag": "1",
             "timestamp": "20230427152943",
             "tabType": "1",
             "order": "2",
