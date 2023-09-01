@@ -8,8 +8,6 @@ import cn.edu.fzu.mytoolbox.databinding.ActivityRecyclerViewBinding
 import cn.edu.fzu.mytoolbox.fragment.GridRecyclerViewFragment
 import cn.edu.fzu.mytoolbox.fragment.RecyclerViewFragment
 import cn.edu.fzu.mytoolbox.fragment.WaterfallFragment
-import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
-import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.gyf.immersionbar.ImmersionBar
 

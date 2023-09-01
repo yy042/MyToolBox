@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:gravity="center">
 
     <ImageView
         android:id="@+id/tabIcon"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:src="@drawable/pic_goods_fes"
-        app:layout_constraintBottom_toBottomOf="@+id/tabName"
-        app:layout_constraintEnd_toStartOf="@id/tabName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tabName" />
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/tabName"
@@ -24,9 +18,13 @@
         android:gravity="center"
         android:text="Tab 1"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tabIcon"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tabBadge"
+        android:layout_width="6.5dp"
+        android:layout_height="6.5dp"
+        android:background="@drawable/red_dot"
+        android:layout_gravity="right|top"/>
+
+</FrameLayout>
