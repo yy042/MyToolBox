@@ -6,6 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cn.edu.fzu.mytoolbox.R
+import cn.edu.fzu.mytoolbox.adapter.RvWaterfallAdapter
+import cn.edu.fzu.mytoolbox.databinding.FragmentMultiViewWaterfallBinding
+import cn.edu.fzu.mytoolbox.databinding.FragmentRecyclerViewBinding
+import cn.edu.fzu.mytoolbox.databinding.FragmentWaterfallBinding
+import cn.edu.fzu.mytoolbox.entity.ItemWaterfall
+import cn.edu.fzu.mytoolbox.util.Util
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +24,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MultiViewWaterfallFragment : Fragment() {
+
+    private var _binding: FragmentMultiViewWaterfallBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,8 +46,25 @@ class MultiViewWaterfallFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding= FragmentMultiViewWaterfallBinding.inflate(inflater,container,false)
+
+        var rvWaterfallAdapter= RvWaterfallAdapter(R.layout.item_waterfall,mutableListOf())
+        Util.setupWaterfall(
+            binding.rvFeedWaterfall, //传入recyclerView对象
+            rvWaterfallAdapter,
+            listOf( //传入数据列表
+                ItemWaterfall("0", "0", "电信关爱版-为老年人架桥", "no", R.drawable.pic_elderly),
+                ItemWaterfall("赠新人礼包", "赠美团神券", "加装【副卡】，一份套餐全家用", "10", R.drawable.pic_family),
+                ItemWaterfall("免运费", "送配件", "iPhone12 128GB 红色 双卡双待", "300", R.drawable.pic_iphone),
+                ItemWaterfall("赠新人礼包", "0", "15GB定向流量+腾讯视频月会员卡", "10", R.drawable.pic_tencentvip),
+                ItemWaterfall("0", "0", "电信关爱版-为老年人架桥", "no", R.drawable.pic_elderly),
+                ItemWaterfall("赠新人礼包", "赠美团神券", "加装【副卡】，一份套餐全家用", "10", R.drawable.pic_family),
+                ItemWaterfall("免运费", "送配件", "iPhone12 128GB 红色 双卡双待", "300", R.drawable.pic_iphone),
+                ItemWaterfall("赠新人礼包", "0", "15GB定向流量+腾讯视频月会员卡", "10", R.drawable.pic_tencentvip)
+            )
+        )
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_multi_view_waterfall, container, false)
+        return binding.root
     }
 
     companion object {
