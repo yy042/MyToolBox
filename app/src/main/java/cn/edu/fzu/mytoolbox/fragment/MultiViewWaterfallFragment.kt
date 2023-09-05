@@ -1,17 +1,16 @@
 package cn.edu.fzu.mytoolbox.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.adapter.RvWaterfallAdapter
+import cn.edu.fzu.mytoolbox.adapter.FeedWaterfallAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentMultiViewWaterfallBinding
-import cn.edu.fzu.mytoolbox.databinding.FragmentRecyclerViewBinding
-import cn.edu.fzu.mytoolbox.databinding.FragmentWaterfallBinding
-import cn.edu.fzu.mytoolbox.entity.ItemWaterfall
+import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.util.Util
+import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,21 +47,20 @@ class MultiViewWaterfallFragment : Fragment() {
     ): View? {
         _binding= FragmentMultiViewWaterfallBinding.inflate(inflater,container,false)
 
-        var rvWaterfallAdapter= RvWaterfallAdapter(R.layout.item_waterfall,mutableListOf())
+        // 从本地json文件中读取json字符串
+        val json = requireActivity().assets.open("feed.json").bufferedReader().use { it.readText() }
+        // 使用Gson对象将json字符串转换为TabListBean对象列表
+        val gson = Gson()
+        val GetFeedListData = gson.fromJson(json, GetFeedListData::class.java)
+        val feedList: List<GetFeedListData.FeedListBean> = GetFeedListData.feedList
+
+        var rvWaterfallAdapter= FeedWaterfallAdapter(R.layout.item_feed_waterfall,mutableListOf())
         Util.setupWaterfall(
             binding.rvFeedWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,
-            listOf( //传入数据列表
-                ItemWaterfall("0", "0", "电信关爱版-为老年人架桥", "no", R.drawable.pic_elderly),
-                ItemWaterfall("赠新人礼包", "赠美团神券", "加装【副卡】，一份套餐全家用", "10", R.drawable.pic_family),
-                ItemWaterfall("免运费", "送配件", "iPhone12 128GB 红色 双卡双待", "300", R.drawable.pic_iphone),
-                ItemWaterfall("赠新人礼包", "0", "15GB定向流量+腾讯视频月会员卡", "10", R.drawable.pic_tencentvip),
-                ItemWaterfall("0", "0", "电信关爱版-为老年人架桥", "no", R.drawable.pic_elderly),
-                ItemWaterfall("赠新人礼包", "赠美团神券", "加装【副卡】，一份套餐全家用", "10", R.drawable.pic_family),
-                ItemWaterfall("免运费", "送配件", "iPhone12 128GB 红色 双卡双待", "300", R.drawable.pic_iphone),
-                ItemWaterfall("赠新人礼包", "0", "15GB定向流量+腾讯视频月会员卡", "10", R.drawable.pic_tencentvip)
-            )
+            feedList
         )
+
         // Inflate the layout for this fragment
         return binding.root
     }

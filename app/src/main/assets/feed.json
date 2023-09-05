@@ -10,7 +10,71 @@
             "provinceCode": null,
             "recommender": null,
             "sceneId": null,
-            "picArea": null,
+            "picArea": {
+                "imageUrl": "",
+                "imageRatio": "",
+                "playType": null,
+                "videoStreamUrl": null,
+                "videoStreamUrlType": null,
+                "startTime": null,
+                "endTime": null,
+                "videoCommerceId": null,
+                "topImage": null,
+                "topImageBeforeLive": null,
+                "topImageLiving": null,
+                "videoDuration": null,
+                "type": "2",
+                "stock": null,
+                "link": "https://www.189.cn/images/client/commonupload/2022/3/17/143844/nuanxin/index.html?cmpid=jt-wap-sy-flzx&shopid=189.WAP.nxb-1012",
+                "linkType": "2",
+                "title": "5日暖心包 9.9元10GB全国流量",
+                "provinceCode": "600101,600102,600103,600105,600201,600202,600203,600204,600205,600301,600302,600303,600304,600305,600401,600402,600403,600405,600406,609001,609902,609904,609905,609903,609906,609907,609908,609909,609910",
+                "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-1.eoc-3184500006",
+                "sceneId": "hg_sy_feedtg##100001##default##3184500006##010001002000##3##N##1##1##N##N##31845",
+                "commentList": null,
+                "picList": [
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654674164033852.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111649383993080624.jpg",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654669856674710.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654653421294263.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    }
+                ]
+            },
             "contentAreaList": null,
             "adLists": [
                 {
@@ -440,7 +504,51 @@
             "provinceCode": "1000000037",
             "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-11.eoc-2221700001",
             "sceneId": "hg_sy_feedtg##100001##default##2221700001##010001002000##3##N##1##11##N##N##22217",
-            "picArea": null,
+            "picArea": {
+                "imageUrl": "",
+                "imageRatio": "",
+                "playType": null,
+                "videoStreamUrl": null,
+                "videoStreamUrlType": null,
+                "startTime": null,
+                "endTime": null,
+                "videoCommerceId": null,
+                "topImage": null,
+                "topImageBeforeLive": null,
+                "topImageLiving": null,
+                "videoDuration": null,
+                "type": "2",
+                "stock": null,
+                "link": "https://www.189.cn/images/client/commonupload/2022/3/17/143844/nuanxin/index.html?cmpid=jt-wap-sy-flzx&shopid=189.WAP.nxb-1012",
+                "linkType": "2",
+                "title": "5日暖心包 9.9元10GB全国流量",
+                "provinceCode": "600101,600102,600103,600105,600201,600202,600203,600204,600205,600301,600302,600303,600304,600305,600401,600402,600403,600405,600406,609001,609902,609904,609905,609903,609906,609907,609908,609909,609910",
+                "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-1.eoc-3184500006",
+                "sceneId": "hg_sy_feedtg##100001##default##3184500006##010001002000##3##N##1##1##N##N##31845",
+                "commentList": null,
+                "picList": [
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654674164033852.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111649383993080624.jpg",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    }
+                ]
+            },
             "contentAreaList": null,
             "adLists": null,
             "quickRecharge": null
@@ -456,8 +564,8 @@
             "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-12.eoc-3199600001",
             "sceneId": "hg_sy_feedtg##100001##default##3199600001##010001002000##3##N##1##12##N##N##31996",
             "picArea": {
-                "imageUrl": null,
-                "imageRatio": null,
+                "imageUrl": "",
+                "imageRatio": "",
                 "playType": null,
                 "videoStreamUrl": null,
                 "videoStreamUrlType": null,
@@ -468,16 +576,47 @@
                 "topImageBeforeLive": null,
                 "topImageLiving": null,
                 "videoDuration": null,
-                "type": null,
+                "type": "2",
                 "stock": null,
-                "link": null,
-                "linkType": null,
-                "title": null,
-                "provinceCode": "1000000037",
-                "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-12.eoc-3199600001",
-                "sceneId": "hg_sy_feedtg##100001##default##3199600001##010001002000##3##N##1##12##N##N##31996",
+                "link": "https://www.189.cn/images/client/commonupload/2022/3/17/143844/nuanxin/index.html?cmpid=jt-wap-sy-flzx&shopid=189.WAP.nxb-1012",
+                "linkType": "2",
+                "title": "5日暖心包 9.9元10GB全国流量",
+                "provinceCode": "600101,600102,600103,600105,600201,600202,600203,600204,600205,600301,600302,600303,600304,600305,600401,600402,600403,600405,600406,609001,609902,609904,609905,609903,609906,609907,609908,609909,609910",
+                "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-1.eoc-3184500006",
+                "sceneId": "hg_sy_feedtg##100001##default##3184500006##010001002000##3##N##1##1##N##N##31845",
                 "commentList": null,
-                "picList": null
+                "picList": [
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654674164033852.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111649383993080624.jpg",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    },
+                    {
+                        "imageRatio": "1.0",
+                        "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654669856674710.png",
+                        "link": "string",
+                        "linkType": "string",
+                        "provinceCode": "string",
+                        "recommender": "string",
+                        "sceneId": "string",
+                        "title": "string"
+                    }
+                ]
             },
             "contentAreaList": [
                 {
