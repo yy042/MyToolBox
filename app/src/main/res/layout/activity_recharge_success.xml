@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:text="成功充值 100元"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="充值号码"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_sub"
                         android:textSize="14sp" />
 
                     <View
@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="173 666 99999"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="支付金额 "
-                        android:textColor="#999999"
+                        android:textColor="@color/text_sub"
                         android:textSize="14sp" />
 
                     <View
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="99.5元"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -157,7 +157,7 @@
                         android:background="@drawable/bg_btn_white"
                         android:gravity="center"
                         android:hint="输入测试文字"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="16sp" />
 
                     <cn.edu.fzu.mytoolbox.util.IconTextView
@@ -191,7 +191,7 @@
                         android:background="@drawable/bg_btn_white"
                         android:gravity="center"
                         android:text="继续充值"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="16sp" />
 
                     <cn.edu.fzu.mytoolbox.util.IconTextView
@@ -266,7 +266,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="为您推荐以下服务"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         />
@@ -280,7 +280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="更多"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_sub"
                         android:textSize="12sp"
                         />
 
@@ -346,7 +346,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="推荐兑换好物："
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="14sp"
                         />
 
@@ -359,7 +359,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="共有"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_sub"
                         android:textSize="12sp"
                         />
 
@@ -383,7 +383,7 @@
                         android:layout_height="19dp"
                         android:layout_marginLeft="14dp"
                         android:text="逛更多"
-                        android:textColor="#999999"
+                        android:textColor="@color/text_sub"
                         android:textSize="12sp" />
 
                     <ImageView

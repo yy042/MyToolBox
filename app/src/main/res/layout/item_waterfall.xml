@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="加装【副卡】，一份套餐全家用"
-                android:textColor="#333333"
+                android:textColor="@color/text_main"
                 android:textSize="14sp"
                 />
 
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="赠新人礼包"
-                    android:textColor="#ea5858"
+                    android:textColor="@color/text_price_red"
                     android:textSize="11sp"
                     android:background="@drawable/bg_waterfall_red_label"
                     android:paddingLeft="5dp"
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="赠美团神券"
-                    android:textColor="#ea5858"
+                    android:textColor="@color/text_price_red"
                     android:textSize="11sp"
                     android:background="@drawable/bg_waterfall_red_label"
                     android:paddingHorizontal="5dp"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥"
-                    android:textColor="#ea5858"
+                    android:textColor="@color/text_price_red"
                     android:textSize="12sp"
                     />
 
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10"
-                    android:textColor="#ea5858"
+                    android:textColor="@color/text_price_red"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     />
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="/月"
-                    android:textColor="#ea5858"
+                    android:textColor="@color/text_price_red"
                     android:textSize="12sp"
                     />
                 

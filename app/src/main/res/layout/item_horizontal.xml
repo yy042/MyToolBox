@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="充流量"
-            android:textColor="#333333"
+            android:textColor="@color/text_main"
             android:textSize="13sp"
             android:layout_marginTop="5dp"
             />
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="流量告急速订购"
-            android:textColor="#999999"
+            android:textColor="@color/text_sub"
             android:textSize="10sp"
             android:layout_marginTop="3dp"
             />

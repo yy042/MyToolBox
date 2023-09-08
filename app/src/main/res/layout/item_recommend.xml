@@ -37,7 +37,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="腾讯视频会员周卡"
-                android:textColor="#333333"
+                android:textColor="@color/text_main"
                 android:textSize="12sp" />
 
             <LinearLayout

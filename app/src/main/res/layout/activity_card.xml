@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CardActivity"
-    android:background="@color/half_transparent">
+    android:background="@color/black_half_transparent">
 
     <ImageView
         android:id="@+id/card_ray"
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="已发放至[我的奖品]"
-            android:textColor="#999999"
+            android:textColor="@color/text_sub"
             android:textSize="12sp"
             android:layout_marginTop="11dp"/>
 

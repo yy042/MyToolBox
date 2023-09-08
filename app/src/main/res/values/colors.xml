@@ -10,6 +10,11 @@
 
 
     <color name="bg_main">#f4f4f4</color>
+    <color name="text_main">#333333</color>
+    <color name="text_sub">#999999</color>
+    <color name="text_label_blue">#5faef7</color>
+    <color name="text_price_red">#ea5858</color>
     <color name="transparent">#00000000</color>
-    <color name="half_transparent">#80000000</color>
+    <color name="blue_half_transparent">#4d1ee2ff</color>
+    <color name="black_half_transparent">#80000000</color>
 </resources>
