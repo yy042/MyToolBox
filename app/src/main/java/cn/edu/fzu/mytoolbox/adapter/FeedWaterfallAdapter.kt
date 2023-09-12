@@ -50,7 +50,7 @@ class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.F
                         val params = helper.getView<ImageView>(R.id.ivFeedPic1).layoutParams as ConstraintLayout.LayoutParams // 获取单图视图的LayoutParams
                         params.height = height // 设置高度
 
-                        helper.setText(R.id.rvFeedContentArea, ""+height)
+                        //helper.setText(R.id.rvFeedContentArea, ""+height)
                     }
 
                 }
@@ -105,8 +105,8 @@ class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.F
                     // 在这里写其他情况的处理逻辑，例如隐藏图片视图、显示错误信息等
                 }
             }
-            val position = helper.adapterPosition
-            helper.setText(R.id.rvFeedContentArea, "第${position + 1}个item,图片个数是${item.picArea.picList.size}")
+           /* val position = helper.adapterPosition
+            helper.setText(R.id.rvFeedContentArea, "第${position + 1}个item,图片个数是${item.picArea.picList.size}")*/
 
             // 处理topImage
             // 处理commentList
@@ -143,7 +143,13 @@ class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.F
 
         }
         
-
+        // 文字区的处理
+        if(item.contentAreaList.isNullOrEmpty()){
+            helper.setGone(R.id.rvFeedContentArea,true)
+        }else{
+            val rvContentAreaAdapter= FeedContentAreaAdapter(mutableListOf())
+            setupRecyclerView(helper.getView<RecyclerView>(R.id.rvFeedContentArea),rvContentAreaAdapter,item.contentAreaList,LinearLayoutManager.VERTICAL,10.dpToPx(context))
+        }
 
     }
 

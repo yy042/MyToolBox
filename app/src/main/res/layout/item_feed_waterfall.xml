@@ -7,122 +7,131 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivFeedPic1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pic_elderly"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/ivFeedPic3"
-            app:layout_constraintEnd_toStartOf="@id/ivFeedPic2"
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivFeedPic2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pic_iphone"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintStart_toEndOf="@id/ivFeedPic1"
-            app:layout_constraintBottom_toTopOf="@id/ivFeedPic4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/ivFeedPic1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pic_elderly"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/ivFeedPic3"
+                app:layout_constraintEnd_toStartOf="@id/ivFeedPic2"
+                />
 
-        <ImageView
-            android:id="@+id/ivFeedPic3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pic_family"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@id/ivFeedPic4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivFeedPic1"
-            app:layout_constraintBottom_toTopOf="@id/rvFeedContentArea"
-            />
+            <ImageView
+                android:id="@+id/ivFeedPic2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pic_iphone"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toEndOf="@id/ivFeedPic1"
+                app:layout_constraintBottom_toTopOf="@id/ivFeedPic4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivFeedPic4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pic_tencentvip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivFeedPic3"
-            app:layout_constraintTop_toBottomOf="@id/ivFeedPic2"
-            app:layout_constraintBottom_toTopOf="@id/rvFeedContentArea"
-            />
+            <ImageView
+                android:id="@+id/ivFeedPic3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pic_family"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/ivFeedPic4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivFeedPic1"
+                />
+
+            <ImageView
+                android:id="@+id/ivFeedPic4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pic_tencentvip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivFeedPic3"
+                app:layout_constraintTop_toBottomOf="@id/ivFeedPic2"
+                />
+
+            <ImageView
+                android:id="@+id/ivFeedTopImage"
+                android:layout_width="0dp"
+                android:layout_height="17dp"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8.5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp">
+
+                <cn.edu.fzu.mytoolbox.util.MarqueeLayout
+                    android:id="@+id/marqueeFeedCommentList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/tvFeedStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="无货"
+                    android:background="@drawable/bg_label_black_translucent"
+                    android:gravity="center"
+                    android:paddingHorizontal="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:layout_marginTop="5dp"
+                    />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFeedContentArea"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivFeedPic3" />
 
-        <ImageView
-            android:id="@+id/ivFeedTopImage"
-            android:layout_width="0dp"
-            android:layout_height="17dp"
-            android:scaleType="fitCenter"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8.5dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/rvFeedContentArea"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp">
-
-            <cn.edu.fzu.mytoolbox.util.MarqueeLayout
-                android:id="@+id/marqueeFeedCommentList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-            <TextView
-                android:id="@+id/tvFeedStock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="无货"
-                android:background="@drawable/bg_label_black_translucent"
-                android:gravity="center"
-                android:paddingHorizontal="6dp"
-                android:textColor="@color/white"
-                android:textSize="11sp"
-                android:layout_marginTop="5dp"
-                />
-        </LinearLayout>
+    </LinearLayout>
 
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
 

@@ -23,7 +23,8 @@ object Util {
         recyclerView: RecyclerView, //传入recyclerView对象
         adapter: BaseQuickAdapter<T, BaseViewHolder>, //传入adapter对象
         dataList: List<T>, //传入数据列表
-        orientation: Int = LinearLayoutManager.HORIZONTAL //传入布局方向，默认为水平
+        orientation: Int = LinearLayoutManager.HORIZONTAL, //传入布局方向，默认为水平
+        margin: Int = 0 //传入item间距值，默认为0
     ) {
         //设置recyclerView的布局管理器
         val layoutManager = LinearLayoutManager(recyclerView.context, orientation, false)
@@ -33,7 +34,65 @@ object Util {
         adapter.setList(dataList)
         recyclerView.adapter = adapter
 
+        //设置recyclerView的item间距
+        if (margin > 0) {
+            //把item间距值转换成px值，并且除以2
+            val distance = margin / 2
+            //创建一个ItemDecoration对象，传入间距值
+            val itemDecoration = object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    super.getItemOffsets(outRect, view, parent, state)
+                    //获取item的位置
+                    val position = parent.getChildAdapterPosition(view)
+                    //获取item的总数
+                    val count = parent.adapter?.itemCount ?: 0
+                    //如果只有一个item，不设置间距
+                    if (count == 1) {
+                        return
+                    }
+                    //根据布局方向，设置不同的边距
+                    if (orientation == LinearLayoutManager.HORIZONTAL) {
+                        //如果是第一个item，只设置右边距
+                        if (position == 0) {
+                            outRect.right = distance
+                        }
+                        //如果是最后一个item，只设置左边距
+                        else if (position == count - 1) {
+                            outRect.left = distance
+                        }
+                        //其他情况，设置左右边距
+                        else {
+                            outRect.left = distance
+                            outRect.right = distance
+                        }
+                    } else {
+                        //如果是第一个item，只设置下边距
+                        if (position == 0) {
+                            outRect.bottom = distance
+                        }
+                        //如果是最后一个item，只设置上边距
+                        else if (position == count - 1) {
+                            outRect.top = distance
+                        }
+                        //其他情况，设置上下边距
+                        else {
+                            outRect.top = distance
+                            outRect.bottom = distance
+                        }
+                    }
+                }
+
+            }
+            //添加ItemDecoration到recyclerView中
+            recyclerView.addItemDecoration(itemDecoration)
+        }
     }
+
 
     fun <T> setupGridRecyclerView(
         recyclerView: RecyclerView, //传入recyclerView对象

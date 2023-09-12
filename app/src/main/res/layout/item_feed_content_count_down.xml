@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@drawable/bg_btn_red_round_border">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:gravity="center"
+        android:paddingHorizontal="6dp"
+        android:text="距结束"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:background="@drawable/bg_label_red_gradient"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:gravity="center"
+        android:text="01:33:21"
+        android:layout_marginLeft="2.5dp"
+        android:layout_marginRight="4.5dp"
+        android:textColor="@color/text_price_red"
+        android:textSize="11sp"
+        />
+
+</LinearLayout>
