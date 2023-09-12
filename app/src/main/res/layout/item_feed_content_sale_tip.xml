@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="17dp">
 
     <TextView
+        android:id="@+id/tvSaleTipTitle"
         android:layout_width="wrap_content"
-        android:layout_height="17dp"
+        android:layout_height="match_parent"
         android:background="@drawable/bg_label_blue_round_border"
         android:gravity="center"
         android:paddingHorizontal="6dp"
-        android:text="赠IPTV+全屋WiFi"
+        android:text="特价手机"
         android:textColor="@color/text_label_blue"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivSaleTipImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

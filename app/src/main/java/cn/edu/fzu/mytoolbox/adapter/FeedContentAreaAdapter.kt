@@ -1,8 +1,12 @@
 package cn.edu.fzu.mytoolbox.adapter
 
 import android.graphics.Color
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
+import cn.edu.fzu.mytoolbox.util.Util
+import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
@@ -17,7 +21,7 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
         )
         addItemType(
             GetFeedListData.CONTENTAREA_TYPE.SALE_TIP.toInt(),
-            R.layout.item_feed_content_sale_tip
+            R.layout.rv_feed_content_sale_tip
         )
         addItemType(
             GetFeedListData.CONTENTAREA_TYPE.PRICE.toInt(),
@@ -69,7 +73,15 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
 
             }
             GetFeedListData.CONTENTAREA_TYPE.SALE_TIP.toInt() -> {
-
+                // 设置SaleTip列表
+                val rvSaleTipAdapter= RvSaleTipAdapter(R.layout.item_feed_content_sale_tip,mutableListOf())
+                Util.setupRecyclerView(
+                    holder.getView<RecyclerView>(R.id.rvFeedContentSaleTip),
+                    rvSaleTipAdapter,
+                    item.saleTipList,
+                    LinearLayoutManager.HORIZONTAL,
+                    5.dpToPx(context)
+                )
             }
             GetFeedListData.CONTENTAREA_TYPE.PRICE.toInt() -> {
 

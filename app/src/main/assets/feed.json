@@ -1238,6 +1238,20 @@
                             "frameColor": "",
                             "imageUrl": "",
                             "type": "1"
+                        },
+                        {
+                            "title": "",
+                            "fontColor": "",
+                            "frameColor": "",
+                            "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654673122484531.png",
+                            "type": "2"
+                        },
+                        {
+                            "title": "",
+                            "fontColor": "",
+                            "frameColor": "",
+                            "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654673122484531.png",
+                            "type": "2"
                         }
                     ],
                     "price": null,
