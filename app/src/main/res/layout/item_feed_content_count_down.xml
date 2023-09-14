@@ -8,6 +8,7 @@
     android:background="@drawable/bg_btn_red_round_border">
 
     <TextView
+        android:id="@+id/tvFeedContentCountDownStatus"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:gravity="center"
@@ -19,6 +20,7 @@
         />
 
     <TextView
+        android:id="@+id/tvFeedContentCountDownTime"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:gravity="center"
@@ -27,6 +29,7 @@
         android:layout_marginRight="4.5dp"
         android:textColor="@color/text_price_red"
         android:textSize="11sp"
+        android:fontFamily="monospace"
         />
 
 </LinearLayout>
