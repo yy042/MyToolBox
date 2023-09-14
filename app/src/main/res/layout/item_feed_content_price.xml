@@ -7,6 +7,7 @@
     android:gravity="bottom">
     
     <TextView
+        android:id="@+id/tvFeedContentPriceUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="￥"
@@ -15,27 +16,46 @@
         />
 
     <TextView
+        android:id="@+id/tvFeedContentPriceInteger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="159.22/月"
+        android:text="159"
         android:textColor="@color/text_price_red"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tvFeedContentPriceDecimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=".22/月"
+        android:textColor="@color/text_price_red"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        />
 
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <TextView
+    <cn.edu.fzu.mytoolbox.util.StrikeTextView
+        android:id="@+id/tvFeedContentOriginalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="200金豆"
         android:textSize="12sp"
-        android:textColor="@color/text_sub"
+        app:strike="true"
+        android:textColor="@color/text_secondary"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
         />
 
 </LinearLayout>

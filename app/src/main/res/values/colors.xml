@@ -11,7 +11,7 @@
 
     <color name="bg_main">#f4f4f4</color>
     <color name="text_main">#333333</color>
-    <color name="text_sub">#999999</color>
+    <color name="text_secondary">#999999</color>
     <color name="text_label_blue">#5faef7</color>
     <color name="text_btn_blue">#0e8cff</color>
     <color name="text_baby_blue">#dbf4ff</color>

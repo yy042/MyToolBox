@@ -743,8 +743,8 @@
                     "saleTipList": null,
                     "price": {
                         "isShowPriceUnit": "1",
-                        "priceInteger": "29",
-                        "priceDecimal": "起/月",
+                        "priceInteger": "159",
+                        "priceDecimal": ".22/月",
                         "priceColor": "",
                         "originalPrice": "",
                         "originalPriceColor": "",
@@ -842,7 +842,7 @@
                     "saleTipList": null,
                     "price": {
                         "isShowPriceUnit": "1",
-                        "priceInteger": "5",
+                        "priceInteger": "50000000000000000000000000000000000000",
                         "priceDecimal": "/月",
                         "priceColor": "",
                         "originalPrice": "",
@@ -998,9 +998,9 @@
                         "priceInteger": "19",
                         "priceDecimal": "/月",
                         "priceColor": "",
-                        "originalPrice": "",
+                        "originalPrice": "¥23.9/月",
                         "originalPriceColor": "",
-                        "isOriginalPriceLine": ""
+                        "isOriginalPriceLine": "1"
                     },
                     "location": null,
                     "countDown": null,
@@ -1103,9 +1103,9 @@
                         "priceInteger": "21",
                         "priceDecimal": "起/月",
                         "priceColor": "",
-                        "originalPrice": "",
+                        "originalPrice": "200金豆",
                         "originalPriceColor": "",
-                        "isOriginalPriceLine": ""
+                        "isOriginalPriceLine": "1"
                     },
                     "location": null,
                     "countDown": null,

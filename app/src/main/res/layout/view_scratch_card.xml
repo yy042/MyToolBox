@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:text="累计剩余3次"
-            android:textColor="@color/text_sub"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
         <View
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:text="再刮一次"
-            android:textColor="@color/text_sub"
+            android:textColor="@color/text_secondary"
             android:textSize="12sp" />
 
     </LinearLayout>

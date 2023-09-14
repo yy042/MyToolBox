@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
+import cn.edu.fzu.mytoolbox.util.StrikeTextView
 import cn.edu.fzu.mytoolbox.util.Util
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -84,6 +85,43 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
                 )
             }
             GetFeedListData.CONTENTAREA_TYPE.PRICE.toInt() -> {
+                // 售价是否显示人民币符号，不为1则不显示
+                if(!item.price.isShowPriceUnit.equals("1")){
+                    holder.setGone(R.id.tvFeedContentPriceUnit,true)
+                }
+
+                // 售价整数部分
+                if(item.price.priceInteger.isNullOrBlank()){
+                    holder.setGone(R.id.tvFeedContentPriceInteger,true)
+                }else{
+                    holder.setText(R.id.tvFeedContentPriceInteger,item.price.priceInteger)
+                }
+
+                // 售价小数部分和其他
+                if(item.price.priceDecimal.isNullOrBlank()){
+                    holder.setGone(R.id.tvFeedContentPriceDecimal,true)
+                }else{
+                    holder.setText(R.id.tvFeedContentPriceDecimal,item.price.priceDecimal)
+                }
+
+                // 售价颜色
+                if(!item.price.priceColor.isNullOrBlank()){
+                    holder.setTextColor(R.id.tvFeedContentPriceInteger,Color.parseColor(item.price.priceColor))
+                }
+
+                // 原价和原价颜色
+                if(item.price.originalPrice.isNullOrBlank())
+                    holder.setGone(R.id.tvFeedContentOriginalPrice,true)
+                else{
+                    holder.setText(R.id.tvFeedContentOriginalPrice,item.price.originalPrice)
+                    // 设置颜色
+                    if(!item.price.priceColor.isNullOrBlank())
+                        holder.setTextColor(R.id.tvFeedContentOriginalPrice,Color.parseColor(item.price.originalPriceColor))
+                }
+
+                // 原价是否划横线，不为1则不显示
+                if(!item.price.isOriginalPriceLine.equals("1"))
+                    holder.getView<StrikeTextView>(R.id.tvFeedContentOriginalPrice).strike=false
 
             }
             GetFeedListData.CONTENTAREA_TYPE.LOCATION.toInt() -> {

@@ -52,4 +52,10 @@
         <attr name="srcResult" format="reference" />
         <attr name="srcFront" format="reference" />
     </declare-styleable>
+
+    <!-- 定义一个自定义带删除线的TextView的属性集合 -->
+    <declare-styleable name="StrikeTextView">
+        <attr name="strike" format="boolean" />
+    </declare-styleable>
+
 </resources>

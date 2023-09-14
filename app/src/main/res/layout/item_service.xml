@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="流量告急速订购"
-        android:textColor="@color/text_sub"
+        android:textColor="@color/text_secondary"
         android:textSize="10sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="12.5dp"
