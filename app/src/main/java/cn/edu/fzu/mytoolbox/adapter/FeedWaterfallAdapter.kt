@@ -19,7 +19,8 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
-class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.FeedListBean>) : BaseQuickAdapter<GetFeedListData.FeedListBean, BaseViewHolder>(layoutResId, data) {
+class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.FeedListBean>) :
+    BaseQuickAdapter<GetFeedListData.FeedListBean, BaseViewHolder>(layoutResId, data) {
     override fun convert(helper: BaseViewHolder, item: GetFeedListData.FeedListBean) {
         // 主图区的处理
         if(item.picArea == null){
@@ -65,7 +66,7 @@ class FeedWaterfallAdapter(layoutResId: Int, data: MutableList<GetFeedListData.F
                             helper.setGone(R.id.ivFeedPic4,true)
 
                             // 加载单图图片到单图视图中
-                            Glide.with(context).load(item.picArea.imageUrl).into(helper.getView(R.id.ivFeedPic1))
+                            Glide.with(context).load(item.picArea.imageUrl).fitCenter().into(helper.getView(R.id.ivFeedPic1))
 
                             // 根据图片宽高比计算单图视图的高度，并设置给LayoutParams
                             recyclerView.post{

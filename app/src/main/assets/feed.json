@@ -1456,6 +1456,38 @@
                         }
                     ],
                     "completionInfo": null
+                },
+                {
+                    "type": "8",
+                    "mainTitle": null,
+                    "saleTipList": null,
+                    "price": null,
+                    "location": null,
+                    "countDown": null,
+                    "numText": null,
+                    "picList": [
+                        {
+                            "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111649402004715428.png",
+                            "imageRatio": "4.300",
+                            "link": "http://xingboke.189.cn:8081/luntan/index.html#/videoDetail?articleId=3514&l=syfeed-duanshipin",
+                            "linkType": "2",
+                            "title": "1GB流量日包",
+                            "provinceCode": "1000000037",
+                            "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-20.eoc-3492900001",
+                            "sceneId": "hg_sy_feedtg##100001##default##3492900001##010001002000##3##N##1##20##N##N##34929"
+                        },
+                        {
+                            "imageUrl": "https://w.189.cn/bigdata/2023/3/1/111677635483889539.png",
+                            "imageRatio": "4.300",
+                            "link": "http://xingboke.189.cn:8081/luntan/index.html#/videoDetail?articleId=3514&l=syfeed-duanshipin",
+                            "linkType": "2",
+                            "title": "1GB流量日包",
+                            "provinceCode": "1000000037",
+                            "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-20.eoc-3492900001",
+                            "sceneId": "hg_sy_feedtg##100001##default##3492900001##010001002000##3##N##1##20##N##N##34929"
+                        }
+                    ],
+                    "completionInfo": null
                 }
             ],
             "adLists": null,

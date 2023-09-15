@@ -215,12 +215,19 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
 
             }
             GetFeedListData.CONTENTAREA_TYPE.NUM.toInt() -> {
-
+                if(!item.numText.isNullOrBlank()){
+                    holder.setText(R.id.tvFeedContentNum,item.numText)
+                }
             }
             GetFeedListData.CONTENTAREA_TYPE.PIC_ONE.toInt() -> {
-
+                if(!item.picList.isNullOrEmpty())
+                    Glide.with(context).load(item.picList[0].imageUrl).fitCenter().into(holder.getView(R.id.ivFeedContentPicOne))
             }
             GetFeedListData.CONTENTAREA_TYPE.PIC_TWO.toInt() -> {
+                if(!item.picList.isNullOrEmpty()){
+                    Glide.with(context).load(item.picList[0].imageUrl).into(holder.getView(R.id.ivFeedContentPicTwo1))
+                    Glide.with(context).load(item.picList[1].imageUrl).into(holder.getView(R.id.ivFeedContentPicTwo2))
+                }
 
             }
             GetFeedListData.CONTENTAREA_TYPE.COMPLETION.toInt() -> {
