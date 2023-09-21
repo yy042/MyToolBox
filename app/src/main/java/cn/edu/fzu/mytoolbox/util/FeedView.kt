@@ -37,17 +37,19 @@ class FeedView (context: Context, attrs: AttributeSet) :
     private val binding = ViewFeedBinding.inflate(LayoutInflater.from(context), this, true)
 
     init{
-        // 设置ViewPager2
-        val pagerAdapter= EmbeddedViewPagerAdapter(context as FragmentActivity)
-        // 设置ViewPager2的adapter属性为pagerAdapter
-        binding.feedViewPager.adapter = pagerAdapter
-
         // 从本地json文件中读取json字符串
         val json = context.assets.open("tab.json").bufferedReader().use { it.readText() }
         // 使用Gson对象将json字符串转换为TabListBean对象列表
         val gson = Gson()
         val feedTabData = gson.fromJson(json, GetFeedTabData::class.java)
         val tabList: List<GetFeedTabData.TabListBean> = feedTabData.tabList
+
+        // 设置ViewPager2
+        val pagerAdapter= EmbeddedViewPagerAdapter(context as FragmentActivity)
+        // 设置ViewPager2的adapter属性为pagerAdapter
+        binding.feedViewPager.adapter = pagerAdapter
+        // 设置ViewPager2的预加载数量，以避免每次切换都重新加在Fragment
+        binding.feedViewPager.offscreenPageLimit = tabList.size
 
         val tabLayout = binding.feedTabLayout
         tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
