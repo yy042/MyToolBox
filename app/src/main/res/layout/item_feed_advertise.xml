@@ -7,41 +7,21 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+    <cn.edu.fzu.mytoolbox.util.NestedScrollableHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-      <cn.edu.fzu.mytoolbox.util.NestedScrollableHost
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/feedAdvertiseScroller"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="true"
+            app:banner_pointContainerBackground="@android:color/transparent"
+            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+            app:banner_pointTopBottomMargin="15dp"
+            app:banner_transitionEffect="alpha" />
 
-          <androidx.viewpager2.widget.ViewPager2
-              android:id="@+id/feedRollViewPager"
-              android:layout_width="match_parent"
-              android:layout_height="200dp"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" />
-
-          <com.google.android.material.tabs.TabLayout
-              android:id="@+id/feedRollTabLayout"
-              android:layout_width="150dp"
-              android:layout_height="wrap_content"
-              android:layout_centerHorizontal="true"
-              android:background="@android:color/transparent"
-              app:tabGravity="start"
-              app:tabIndicator="@null"
-              app:tabIndicatorFullWidth="false"
-              app:tabSelectedTextColor="@color/text_btn_blue"
-              app:layout_constraintBottom_toBottomOf="@id/feedRollViewPager"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              />
-
-
-      </cn.edu.fzu.mytoolbox.util.NestedScrollableHost>
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </cn.edu.fzu.mytoolbox.util.NestedScrollableHost>
 
 </androidx.cardview.widget.CardView>

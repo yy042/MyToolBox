@@ -48,7 +48,7 @@ class FeedView (context: Context, attrs: AttributeSet) :
         val pagerAdapter= EmbeddedViewPagerAdapter(context as FragmentActivity)
         // 设置ViewPager2的adapter属性为pagerAdapter
         binding.feedViewPager.adapter = pagerAdapter
-        // 设置ViewPager2的预加载数量，以避免每次切换都重新加在Fragment
+        // 设置ViewPager2的预加载数量，以避免每次切换都重新加载Fragment
         binding.feedViewPager.offscreenPageLimit = tabList.size
 
         val tabLayout = binding.feedTabLayout
@@ -144,76 +144,6 @@ class FeedView (context: Context, attrs: AttributeSet) :
 
         // 调用 attach 方法，建立 TabLayout 和 ViewPager2 的联动
         tabLayoutMediator.attach()
-
-      /*  // 设置TabLayout的选中监听器，当用户点击某个tab时触发相应的逻辑
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                // 设置ViewPager2的当前页面为tab对应的位置
-                binding.feedViewPager.setCurrentItem(tab.position, true)
-                // 获取当前选中的tab对应的TabListBean对象
-                val selectedTab = tabList[tab.position]
-                // 根据type设置tab栏显示内容类型，1.显示feed流原生列表 2：显示wap页面 3：10.0新增显示原生关注页
-                when (selectedTab.type) {
-                    "1" -> {
-                        // 显示feed流原生列表，可以使用RecyclerView或其他列表控件实现，并传入selectedTab.order作为查询参数
-
-                    }
-                    "2" -> {
-                        // 显示wap页面，可以使用WebView或其他浏览器控件实现，并传入selectedTab.link作为跳转链接
-
-                    }
-                    "3" -> {
-                        // 显示原生关注页，可以自定义一个关注页控件实现，并传入selectedTab.tagList作为标签列表
-
-                    }
-                }
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                // 当某个tab取消选中时，可以做一些清理或回收的操作
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-                // 当某个tab再次选中时，可以做一些刷新或重置的操作
-            }
-        })
-        binding.feedViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                // 设置TabLayout的当前tab为position对应的tab，并平滑滚动
-                tabLayout.setScrollPosition(position, 0f, true)
-                // 遍历所有的tabItem
-                for (i in 0 until tabLayout.tabCount) {
-                    val tab = tabLayout.getTabAt(i)
-                    // 设置选中的tab文字变黑
-                    val view = tab?.customView
-                    // 获取视图中的TextView组件
-                    val tvTabText = view?.findViewById<TextView>(R.id.tabName)
-                    if (tab != null) {
-                        if (tab.position == position) {
-                            // 如果TextView不为空
-                            if (tvTabText != null) {
-                                // 将TextView的textSize设置为17sp
-                                tvTabText.textSize = 17f
-                                // 将TextView的textColor设置为黑色
-                                tvTabText.setTextColor(Color.BLACK)
-                            }
-                        }
-                        else {
-                            // 如果TextView不为空
-                            if (tvTabText != null) {
-                                // 将TextView的textSize设置为16sp
-                                tvTabText.textSize = 16f
-                                // 将TextView的textColor设置为灰色
-                                tvTabText.setTextColor(Color.GRAY)
-                            }
-                        }
-                    }
-
-                }
-
-            }
-        })*/
     }
 
 

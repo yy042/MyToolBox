@@ -5,13 +5,12 @@ import android.graphics.drawable.GradientDrawable
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
+import cn.bingoogolapple.bgabanner.BGABanner
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.util.MarqueeLayout
@@ -20,8 +19,6 @@ import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
     BaseMultiItemQuickAdapter<GetFeedListData.FeedListBean, BaseViewHolder>(data){
@@ -69,87 +66,18 @@ class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
             }
             GetFeedListData.FEED_LIST_ITEM_TYPE.ADVERTISE.toInt()  -> {
                 // 处理广告类型的数据和视图
-                // 获取ViewPager2组件的引用
-                val viewPager = helper.getView<ViewPager2>(R.id.feedRollViewPager)
-                // 获取TabLayout组件的引用
-                val tabLayout = helper.getView<TabLayout>(R.id.feedRollTabLayout)
-                // 获取图片url的列表
-                val images = item.picArea.picList
-                // 创建一个列表，用来存放ImageView对象
-                val imageViews = mutableListOf<ImageView>()
-                // 遍历图片url列表，为每个url创建一个ImageView对象，并添加到列表中
-                for (image in images) {
-                    // 创建一个ImageView对象
-                    val imageView = ImageView(this@FeedWaterfallAdapter.context)
-                    // 设置ImageView的布局参数，宽度为match_parent，高度为wrap_content
-                    imageView.layoutParams = ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT
-                    )
-                    // 设置ImageView的缩放类型为fit_center，保持图片比例居中显示
-                    imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-                    // 使用Glide库加载图片url到ImageView中
-                    Glide.with(this@FeedWaterfallAdapter.context).load(image.imageUrl).into(imageView)
-                    // 将ImageView对象添加到列表中
-                    imageViews.add(imageView)
+                val banner=helper.getView<BGABanner>(R.id.feedAdvertiseScroller)
+                val adList=item.adLists
+                var picList= mutableListOf<String>()
+                for(ad in adList){
+                    picList.add(ad.imageUrl)
                 }
-                // 在列表的首尾分别添加最后一个和第一个ImageView对象，实现无限循环的效果
-                imageViews.add(0, imageViews.last())
-                imageViews.add(imageViews.first())
-                // 设置ViewPager2的适配器，使用lambda表达式创建一个匿名函数
-                viewPager.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-                    // 返回图片的数量
-                    override fun getItemCount(): Int {
-                        return imageViews.size
-                    }
-
-                    // 创建每个页面的视图
-                    override fun onCreateViewHolder(
-                        parent: ViewGroup,
-                        viewType: Int
-                    ): RecyclerView.ViewHolder {
-                        // 创建一个ViewHolder对象，传入对应位置的ImageView对象
-                        return object : RecyclerView.ViewHolder(imageViews[viewType]) {}
-                    }
-
-                    // 绑定每个页面的视图和数据
-                    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-                        // 无需做任何操作，因为视图和数据已经在创建时绑定了
-                    }
-
-                    // 返回每个页面的类型，即它在列表中的位置
-                    override fun getItemViewType(position: Int): Int {
-                        return position
-                    }
-                }
-
-                // 设置ViewPager2的滚动监听器，实现无限循环轮播的效果
-                viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-
-                    // 当页面被选中时，调用此方法
-                    override fun onPageSelected(position: Int) {
-                        super.onPageSelected(position)
-                        // 如果当前页面是第一页，就跳转到倒数第二页（因为最后一页是重复的）
-                        if (position == 0) {
-                            viewPager.setCurrentItem(imageViews.size - 2, false)
-                        }
-                        // 如果当前页面是最后一页，就跳转到第二页（因为第一页是重复的）
-                        if (position == imageViews.size - 1) {
-                            viewPager.setCurrentItem(1, false)
-                        }
-                    }
+                // 设置轮播图的数据源，传入 picList，不需要传入提示文字列表
+                banner.setData(picList, null)
+                   // 设置轮播图的适配器，用于加载图片，这里使用Glide库作为示例
+                banner.setAdapter(BGABanner.Adapter<ImageView, String> { banner, itemView, model, position ->
+                    Glide.with(context).load(model).fitCenter().into(itemView)
                 })
-
-                // 使用TabLayoutMediator将TabLayout和ViewPager2绑定起来，实现指示器的功能
-                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                    // 设置指示器文本为空字符串，只显示圆点
-                    tab.text = ""
-                }.attach()
-
-                // 设置ViewPager2的初始页面为第二页（因为第一页是重复的）
-                viewPager.setCurrentItem(1, false)
-
             }
             GetFeedListData.FEED_LIST_ITEM_TYPE.RECHARGE.toInt()  -> {
                 // 处理充值类型的数据和视图
