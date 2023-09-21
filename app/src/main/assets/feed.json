@@ -656,6 +656,24 @@
                         }
                     ],
                     "completionInfo": null
+                },
+                {
+                    "type": "9",
+                    "mainTitle": null,
+                    "saleTipList": null,
+                    "price": null,
+                    "location": null,
+                    "countDown": null,
+                    "numText": null,
+                    "picList": null,
+                    "completionInfo": {
+                        "link": null,
+                        "linkType": null,
+                        "provinceCode": null,
+                        "recommender": null,
+                        "sceneId": null,
+                        "title": "话费查询"
+                    }
                 }
             ],
             "adLists": null,

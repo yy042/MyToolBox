@@ -137,7 +137,8 @@ object Util {
         recyclerView: RecyclerView, //传入recyclerView对象
         adapter: BaseQuickAdapter<T, BaseViewHolder>, //传入adapter对象
         dataList: List<T>, //传入数据列表
-        orientation: Int = StaggeredGridLayoutManager.VERTICAL //传入布局方向，默认为水平
+        orientation: Int = StaggeredGridLayoutManager.VERTICAL, //传入布局方向，默认为水平
+        distance:Int=10 // 瀑布流item间距
     ) {
         //设置recyclerView的布局管理器
         val layoutManager = StaggeredGridLayoutManager(2, orientation)
@@ -150,13 +151,13 @@ object Util {
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(rect: Rect, view: View, recyclerView: RecyclerView, state: RecyclerView.State) {
                 // 获取当前item的位置
-                //val position = recyclerView.getChildAdapterPosition(view)
+                val position = recyclerView.getChildAdapterPosition(view)
                 // 计算每个item的左右间距，使得间隔为5dp
-                val space = 5.dpToPx(recyclerView.context)
+                val space = (distance/2).dpToPx(recyclerView.context)
                 rect.left = space
                 rect.right = space
                 rect.top = 0
-                rect.bottom = 10.dpToPx(recyclerView.context) // 如果是最后一行，则设置底部间距为10dp，否则为0dp
+                rect.bottom = distance.dpToPx(recyclerView.context) // 如设置底部间距为10dp
             }
         })
 

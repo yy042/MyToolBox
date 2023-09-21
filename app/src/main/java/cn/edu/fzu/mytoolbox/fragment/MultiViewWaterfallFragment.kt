@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
+import cn.edu.fzu.mytoolbox.adapter.FeedContentAreaAdapter
 import cn.edu.fzu.mytoolbox.adapter.FeedWaterfallAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentMultiViewWaterfallBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.util.Util
+import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,7 +58,7 @@ class MultiViewWaterfallFragment : Fragment() {
         val GetFeedListData = gson.fromJson(json, GetFeedListData::class.java)
         val feedList: List<GetFeedListData.FeedListBean> = GetFeedListData.feedList
 
-        var rvWaterfallAdapter= FeedWaterfallAdapter(R.layout.item_feed_waterfall,mutableListOf())
+        val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf())
         Util.setupWaterfall(
             binding.rvFeedWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,

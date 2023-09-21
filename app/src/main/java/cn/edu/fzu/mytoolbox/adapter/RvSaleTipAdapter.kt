@@ -1,14 +1,9 @@
 package cn.edu.fzu.mytoolbox.adapter
 
-import android.graphics.drawable.Drawable
-import android.transition.Transition
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean.ContentAreaListBean.SaleTipListBean
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 

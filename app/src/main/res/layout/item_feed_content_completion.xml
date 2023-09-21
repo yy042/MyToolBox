@@ -5,9 +5,10 @@
     android:layout_height="30dp">
 
     <TextView
+        android:id="@+id/tvFeedContentCompletionTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_card_baby_blue"
+        android:background="@drawable/bg_card_pale_blue"
         android:gravity="center"
         android:paddingHorizontal="6dp"
         android:text="签到得金豆"

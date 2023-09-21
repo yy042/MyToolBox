@@ -231,7 +231,8 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
 
             }
             GetFeedListData.CONTENTAREA_TYPE.COMPLETION.toInt() -> {
-
+                if(!item.completionInfo.title.isNullOrBlank())
+                    holder.setText(R.id.tvFeedContentCompletionTitle,item.completionInfo.title)
             }
         }
 
