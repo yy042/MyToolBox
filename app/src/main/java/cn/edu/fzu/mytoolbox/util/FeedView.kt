@@ -2,30 +2,21 @@ package cn.edu.fzu.mytoolbox.util
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.transition.Transition
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.widget.ViewPager2
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.adapter.EmbeddedViewPagerAdapter
-import cn.edu.fzu.mytoolbox.databinding.TabCustomBinding
 import cn.edu.fzu.mytoolbox.databinding.ViewFeedBinding
+import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData.TAB_TYPE
 import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
-import cn.edu.fzu.mytoolbox.fragment.ScratchCardFragment
-import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
@@ -35,6 +26,11 @@ class FeedView (context: Context, attrs: AttributeSet) :
 
     //初始化绑定类
     private val binding = ViewFeedBinding.inflate(LayoutInflater.from(context), this, true)
+
+    // 定义一个接口，用于传递点击事件和数据到activity中
+    interface OnFeedClickListener {
+        fun onFeedClick(feed: FeedListBean, position: Int)
+    }
 
     init{
         // 从本地json文件中读取json字符串

@@ -15,12 +15,14 @@
             android:id="@+id/feedAdvertiseScroller"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:banner_pageChangeDuration="1000"
+            app:banner_aspectRatio="0.74"
+            app:banner_pageChangeDuration="500"
             app:banner_pointAutoPlayAble="true"
             app:banner_pointContainerBackground="@android:color/transparent"
-            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
-            app:banner_pointTopBottomMargin="15dp"
-            app:banner_transitionEffect="alpha" />
+            app:banner_pointDrawable="@drawable/selector_feed_advertise_indicator"
+            app:banner_pointTopBottomMargin="8dp"
+            app:banner_transitionEffect="alpha"
+            />
 
     </cn.edu.fzu.mytoolbox.util.NestedScrollableHost>
 

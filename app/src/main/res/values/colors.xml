@@ -14,8 +14,10 @@
     <color name="text_secondary">#999999</color>
     <color name="text_label_blue">#5faef7</color>
     <color name="text_btn_blue">#0e8cff</color>
+    <color name="indicator_blue">#4466f8</color>
     <color name="text_baby_blue">#dbf4ff</color>
     <color name="btn_pale_blue">#f2fbff</color>
+    <color name="pale_blue_white">#f5f8ff</color>
     <color name="text_price_red">#ea5858</color>
     <color name="text_yellow">#F5C460</color>
     <color name="label_pink">#ffe5e5</color>

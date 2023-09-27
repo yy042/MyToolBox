@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_feed_quick_recharge"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="11.5dp"
+        >
+
+        <TextView
+            android:id="@+id/tvFeedQuickRechargeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快速充值"
+            android:textColor="@color/text_main"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/tvFeedQuickRechargeNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:padding="3dp"
+            android:layout_marginLeft="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrowright"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFeedQuickRechargeTitle"
+            app:layout_constraintDimensionRatio="5:9"
+            app:layout_constraintStart_toEndOf="@+id/tvFeedQuickRechargeTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvFeedQuickRechargeTitle"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tvFeedQuickRechargeNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="173 **** 5526"
+            android:textColor="@color/text_main"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintEnd_toStartOf="@+id/ivFeedQuickRechargeContactIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFeedQuickRechargeTitle"
+            app:layout_constraintBottom_toTopOf="@id/rvFeedQuickRechargeDenomination"
+            />
+
+
+        <ImageView
+            android:id="@+id/ivFeedQuickRechargeContactIcon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_contact_list"
+            app:layout_constraintBottom_toBottomOf="@id/tvFeedQuickRechargeNumber"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvFeedQuickRechargeNumber"
+            app:layout_constraintTop_toTopOf="@id/tvFeedQuickRechargeNumber" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFeedQuickRechargeDenomination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="11dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFeedQuickRechargeNumber"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_feed_quick_recharge_denomination" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

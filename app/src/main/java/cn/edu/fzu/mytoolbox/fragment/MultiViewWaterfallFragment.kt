@@ -1,5 +1,6 @@
 package cn.edu.fzu.mytoolbox.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import cn.edu.fzu.mytoolbox.adapter.FeedWaterfallAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentMultiViewWaterfallBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
+import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.Util
 import com.google.gson.Gson
 
@@ -53,12 +55,14 @@ class MultiViewWaterfallFragment : Fragment() {
         val GetFeedListData = gson.fromJson(json, GetFeedListData::class.java)
         val feedList: List<GetFeedListData.FeedListBean> = GetFeedListData.feedList
 
-        val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf())
+        val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf(),context as FeedView.OnFeedClickListener)
         Util.setupWaterfall(
             binding.rvFeedWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,
             feedList
         )
+
+        binding.rvFeedWaterfall.isNestedScrollingEnabled=true
 
         // Inflate the layout for this fragment
         return binding.root

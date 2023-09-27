@@ -1,18 +1,33 @@
 package cn.edu.fzu.mytoolbox
 
+import android.Manifest
+import android.app.Activity
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.telephony.TelephonyManager
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import cn.edu.fzu.mytoolbox.adapter.*
 import cn.edu.fzu.mytoolbox.databinding.ActivityRechargeSuccessBinding
 import cn.edu.fzu.mytoolbox.entity.*
+import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
+import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.ImmersiveToolbar
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
@@ -24,7 +39,7 @@ import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class RechargeSuccessActivity : AppCompatActivity() {
+class RechargeSuccessActivity : AppCompatActivity(), FeedView.OnFeedClickListener {
 
     private lateinit var rvServiceAdapter: RvServicesAdapter
     private lateinit var rv3ServiceAdapter: RvServicesAdapter
@@ -32,6 +47,15 @@ class RechargeSuccessActivity : AppCompatActivity() {
     private lateinit var rvRecommendAdapter: RvRecommendsAdapter
     private lateinit var rvCardAdapter: RvCardsAdapter
     private lateinit var rvWaterfallAdapter: RvWaterfallAdapter
+
+    private lateinit var viewPager: ViewPager2
+
+    // 定义一个回调函数的接口
+    interface OnContactIconClickListener {
+        // 定义一个方法，用于传递点击事件和数据
+        fun onContactIconClick(view: View, data: FeedListBean)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,34 +144,6 @@ class RechargeSuccessActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL
         )
 
-
-        //设置RvCards
-        /*   rvCardAdapter= RvCardsAdapter(R.layout.item_card,mutableListOf())
-           setupRecyclerView(
-               binding.rvCards, //传入recyclerView对象
-               rvCardAdapter,
-               listOf( //传入数据列表
-                   ItemCard("无门槛", "翻","0","0"),
-                   ItemCard("无门槛", "爱奇艺","会员优惠券","去使用"),
-                   ItemCard("无门槛", "很遗憾","未抽中奖品","去使用")
-               ),
-               LinearLayoutManager.HORIZONTAL
-           )
-   */
-
-        //设置Waterfall
-      /*  rvWaterfallAdapter= RvWaterfallAdapter(R.layout.item_waterfall,mutableListOf())
-        setupWaterfall(
-            binding.rvWaterfall, //传入recyclerView对象
-            rvWaterfallAdapter,
-            listOf( //传入数据列表
-                ItemWaterfall("0", "0","电信关爱版-为老年人架桥","no",R.drawable.pic_elderly),
-                ItemWaterfall("赠新人礼包", "赠美团神券","加装【副卡】，一份套餐全家用","10",R.drawable.pic_family),
-                ItemWaterfall("免运费", "送配件","iPhone12 128GB 红色 双卡双待","300",R.drawable.pic_iphone),
-                ItemWaterfall("赠新人礼包", "0","15GB定向流量+腾讯视频月会员卡","10",R.drawable.pic_tencentvip)
-            )
-        )*/
-
         //测试文字自适应
         binding.etTest.addTextChangedListener(object : TextWatcher {
             //在文字改变之前被调用，可以做一些准备工作
@@ -178,6 +174,8 @@ class RechargeSuccessActivity : AppCompatActivity() {
         }
         binding.layoutMarqueeHint.setViewList(views)
 
+        viewPager=binding.layoutFeed.findViewById(R.id.feedViewPager)
+
         //设置textSwitcher
     /*    // 创建一个数据列表
         val messages = listOf(
@@ -193,7 +191,74 @@ class RechargeSuccessActivity : AppCompatActivity() {
         marqueeView.startScroll()
         //或者定义刷新的时间
         marqueeView.startScroll(8000)*/
+
+
     }
+
+    override fun onFeedClick(feed: FeedListBean, position: Int) {
+        // 处理点击事件，判断是否有通讯录权限
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+            // 如果有权限，直接跳转到通讯录选择号码界面
+            startContactPicker(position)
+        } else {
+            // 如果没有权限，请求权限
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CODE_PICK_CONTACT)
+        }
+    }
+
+    // 跳转到通讯录选择号码界面的函数
+    fun startContactPicker(position: Int) {
+        // 创建一个隐式意图，指定动作为选择联系人
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+        // 设置结果类型为电话号码
+        intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+        // 传递position作为额外数据
+        intent.putExtra("position", position)
+        // 启动意图，并等待结果返回
+        startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT)
+    }
+
+    // 请求权限的回调函数
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            REQUEST_CODE_PICK_CONTACT -> {
+                // 如果用户同意了权限请求，跳转到通讯录选择号码界面
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startContactPicker(-1) // 传递-1表示没有指定position
+                } else {
+                    // 如果用户拒绝了权限请求，提示用户需要权限才能继续
+                    Toast.makeText(this, "您需要授予通讯录权限才能选择号码", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    // 接收返回结果的函数
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            REQUEST_CODE_PICK_CONTACT -> {
+                // 如果结果是成功的，并且有数据返回
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    // 获取返回的数据的URI
+                    val contactUri = data.data ?: return
+                    // 查询URI对应的联系人的电话号码
+                    val cursor = this.contentResolver.query(contactUri, null, null, null, null)
+                    cursor?.use {
+                        // 如果有结果，取出第一条记录的电话号码字段
+                        // 使用getcolumnindexorthrow方法来替代getcolumnindex方法
+                        // 这个方法在找不到指定列名时会抛出一个异常，而不是返回-1
+                        val index = it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                        val number = it.getString(index)
+                        // 将电话号码显示在tv1中
+                        Log.d("Contact", "Phone number is $number")
+                    }
+                }
+            }
+        }
+    }
+
 
     private fun inflateView(
         inflater: LayoutInflater, //不要使用可空类型
@@ -219,18 +284,9 @@ class RechargeSuccessActivity : AppCompatActivity() {
         return view
     }
 
-    // Override the onActivityResult method
-/*    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // Check if the request code matches the one we set before
-        if (requestCode == 1) {
-            // Check if the result code is OK
-            if (resultCode == Activity.RESULT_OK) {
-                // Get the card result from the data intent
-                val cardResult = data?.getBooleanExtra("card_result", false) ?: false
-                binding.layoutDraw.updateCardResult(cardResult)
-            }
-        }
-    }*/
+    companion object {
+        const val REQUEST_CODE_PICK_CONTACT = 1
+    }
+
 
 }

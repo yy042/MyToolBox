@@ -17,7 +17,6 @@ class RvSaleTipAdapter(layoutResId: Int, data: MutableList<SaleTipListBean>) : B
             }
             "2" -> {
                 // 使用Glide加载图片，传入url和target
-                val ivSaleTipImage=helper.getView<ImageView>(R.id.ivSaleTipImage)
                 Glide.with(context).load(item.imageUrl).into(helper.getView(R.id.ivSaleTipImage))
                 // 隐藏tvSaleTip
                 helper.setGone(R.id.tvSaleTipTitle,true)

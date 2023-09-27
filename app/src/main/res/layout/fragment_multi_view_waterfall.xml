@@ -15,7 +15,7 @@
         tools:listitem="@layout/item_feed_card_common"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
-        android:nestedScrollingEnabled="false"
+        android:nestedScrollingEnabled="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

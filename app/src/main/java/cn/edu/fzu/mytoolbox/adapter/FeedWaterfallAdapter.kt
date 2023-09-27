@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.bingoogolapple.bgabanner.BGABanner
 import cn.edu.fzu.mytoolbox.R
+import cn.edu.fzu.mytoolbox.RechargeSuccessActivity
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
+import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
+import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.MarqueeLayout
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
 import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
@@ -20,8 +23,11 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
-class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
-    BaseMultiItemQuickAdapter<GetFeedListData.FeedListBean, BaseViewHolder>(data){
+
+class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
+                           val listener: FeedView.OnFeedClickListener
+) :
+    BaseMultiItemQuickAdapter<FeedListBean, BaseViewHolder>(data){
 
     init {
         // 根据type值，添加不同的布局文件
@@ -39,7 +45,7 @@ class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
         )
          addItemType(
             GetFeedListData.FEED_LIST_ITEM_TYPE.RECHARGE.toInt(),
-            R.layout.item_feed_recharge
+            R.layout.item_feed_quick_recharge
         )
         addItemType(
             GetFeedListData.FEED_ADAPTER_ITEM_TYPE.ONE_IMAGE,
@@ -56,7 +62,7 @@ class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
 
     }
 
-    override fun convert(helper: BaseViewHolder, item: GetFeedListData.FeedListBean) {
+    override fun convert(helper: BaseViewHolder, item: FeedListBean) {
         when (helper.itemViewType) {
             GetFeedListData.FEED_LIST_ITEM_TYPE.LIVE.toInt() -> {
                 // 处理直播类型的数据和视图
@@ -78,9 +84,38 @@ class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
                 banner.setAdapter(BGABanner.Adapter<ImageView, String> { banner, itemView, model, position ->
                     Glide.with(context).load(model).fitCenter().into(itemView)
                 })
+                // 设置滑动监听器
+                banner.setDelegate(object : BGABanner.Delegate<ImageView?, String?> {
+                    override fun onBannerItemClick(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+                        // 处理点击事件
+                    }
+
+                    fun onBannerPageChanged(position: Int) {
+                        // 处理页面切换事件
+                    }
+                })
+                //设置是否允许用户手动滑动，默认是true
+                banner.setAllowUserScrollable(true)
+
+                helper.itemView.isNestedScrollingEnabled=true
+
             }
             GetFeedListData.FEED_LIST_ITEM_TYPE.RECHARGE.toInt()  -> {
                 // 处理充值类型的数据和视图
+                helper.setText(R.id.tvFeedQuickRechargeTitle,item.quickRecharge.title)
+                val rvRechargeAdapter= RvFeedQuickRechargeDenoAdapter(R.layout.item_feed_quick_recharge_denomination,mutableListOf())
+                setupRecyclerView(helper.getView<RecyclerView>(R.id.rvFeedQuickRechargeDenomination),
+                    rvRechargeAdapter,
+                    item.quickRecharge.denominations,
+                    LinearLayoutManager.VERTICAL,
+                    10.dpToPx(context))
+
+                // 为ivFeedQuickRechargeContactIcon设置点击监听器
+                helper.getView<ImageView>(R.id.ivFeedQuickRechargeContactIcon).setOnClickListener {
+                    // 调用listener的onFeedClick方法，传递feed和position
+                    listener.onFeedClick(item, helper.adapterPosition)
+                }
+
             }
             GetFeedListData.FEED_ADAPTER_ITEM_TYPE.ONE_IMAGE -> {
                 // 处理单图类型的数据和视图
@@ -295,4 +330,9 @@ class FeedWaterfallAdapter(data: MutableList<GetFeedListData.FeedListBean>) :
         viewTitle.setBackground(defaultDrawable)
         return view
     }
+
+    companion object {
+        private const val REQUEST_PHONE_STATE_PERMISSION = 1001
+    }
+
 }
