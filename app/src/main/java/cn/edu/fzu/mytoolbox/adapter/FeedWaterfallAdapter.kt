@@ -15,6 +15,7 @@ import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.RechargeSuccessActivity
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
+import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
 import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.MarqueeLayout
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
@@ -25,7 +26,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 
 class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
-                           val listener: FeedView.OnFeedClickListener
+                           val listener: MultiViewWaterfallFragment.OnFeedClickListener
 ) :
     BaseMultiItemQuickAdapter<FeedListBean, BaseViewHolder>(data){
 

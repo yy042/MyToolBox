@@ -3,12 +3,10 @@ package cn.edu.fzu.mytoolbox
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.telephony.TelephonyManager
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -19,27 +17,25 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import cn.edu.fzu.mytoolbox.adapter.*
 import cn.edu.fzu.mytoolbox.databinding.ActivityRechargeSuccessBinding
-import cn.edu.fzu.mytoolbox.entity.*
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
+import cn.edu.fzu.mytoolbox.entity.ItemRecommend
+import cn.edu.fzu.mytoolbox.entity.ItemService
+import cn.edu.fzu.mytoolbox.entity.ItemTask
+import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
 import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.ImmersiveToolbar
 import cn.edu.fzu.mytoolbox.util.Util.dpToPx
-import cn.edu.fzu.mytoolbox.util.Util.setStatusBarTextColor
 import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
 import cn.edu.fzu.mytoolbox.util.Util.setupSpacingRecyclerView
-import cn.edu.fzu.mytoolbox.util.Util.setupWaterfall
-import cn.edu.fzu.mytoolbox.util.Util.transparentStatusBar
-import com.google.gson.Gson
-import java.io.BufferedReader
-import java.io.InputStreamReader
 
-class RechargeSuccessActivity : AppCompatActivity(), FeedView.OnFeedClickListener {
+class RechargeSuccessActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityRechargeSuccessBinding
 
     private lateinit var rvServiceAdapter: RvServicesAdapter
     private lateinit var rv3ServiceAdapter: RvServicesAdapter
@@ -50,16 +46,10 @@ class RechargeSuccessActivity : AppCompatActivity(), FeedView.OnFeedClickListene
 
     private lateinit var viewPager: ViewPager2
 
-    // 定义一个回调函数的接口
-    interface OnContactIconClickListener {
-        // 定义一个方法，用于传递点击事件和数据
-        fun onContactIconClick(view: View, data: FeedListBean)
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityRechargeSuccessBinding.inflate(layoutInflater)
+        binding=ActivityRechargeSuccessBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 /*
@@ -195,71 +185,6 @@ class RechargeSuccessActivity : AppCompatActivity(), FeedView.OnFeedClickListene
 
     }
 
-    override fun onFeedClick(feed: FeedListBean, position: Int) {
-        // 处理点击事件，判断是否有通讯录权限
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            // 如果有权限，直接跳转到通讯录选择号码界面
-            startContactPicker(position)
-        } else {
-            // 如果没有权限，请求权限
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CODE_PICK_CONTACT)
-        }
-    }
-
-    // 跳转到通讯录选择号码界面的函数
-    fun startContactPicker(position: Int) {
-        // 创建一个隐式意图，指定动作为选择联系人
-        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-        // 设置结果类型为电话号码
-        intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-        // 传递position作为额外数据
-        intent.putExtra("position", position)
-        // 启动意图，并等待结果返回
-        startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT)
-    }
-
-    // 请求权限的回调函数
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            REQUEST_CODE_PICK_CONTACT -> {
-                // 如果用户同意了权限请求，跳转到通讯录选择号码界面
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startContactPicker(-1) // 传递-1表示没有指定position
-                } else {
-                    // 如果用户拒绝了权限请求，提示用户需要权限才能继续
-                    Toast.makeText(this, "您需要授予通讯录权限才能选择号码", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
-
-    // 接收返回结果的函数
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQUEST_CODE_PICK_CONTACT -> {
-                // 如果结果是成功的，并且有数据返回
-                if (resultCode == Activity.RESULT_OK && data != null) {
-                    // 获取返回的数据的URI
-                    val contactUri = data.data ?: return
-                    // 查询URI对应的联系人的电话号码
-                    val cursor = this.contentResolver.query(contactUri, null, null, null, null)
-                    cursor?.use {
-                        // 如果有结果，取出第一条记录的电话号码字段
-                        // 使用getcolumnindexorthrow方法来替代getcolumnindex方法
-                        // 这个方法在找不到指定列名时会抛出一个异常，而不是返回-1
-                        val index = it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                        val number = it.getString(index)
-                        // 将电话号码显示在tv1中
-                        Log.d("Contact", "Phone number is $number")
-                    }
-                }
-            }
-        }
-    }
-
-
     private fun inflateView(
         inflater: LayoutInflater, //不要使用可空类型
         name: String,
@@ -287,6 +212,5 @@ class RechargeSuccessActivity : AppCompatActivity(), FeedView.OnFeedClickListene
     companion object {
         const val REQUEST_CODE_PICK_CONTACT = 1
     }
-
 
 }

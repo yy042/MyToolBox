@@ -27,11 +27,6 @@ class FeedView (context: Context, attrs: AttributeSet) :
     //初始化绑定类
     private val binding = ViewFeedBinding.inflate(LayoutInflater.from(context), this, true)
 
-    // 定义一个接口，用于传递点击事件和数据到activity中
-    interface OnFeedClickListener {
-        fun onFeedClick(feed: FeedListBean, position: Int)
-    }
-
     init{
         // 从本地json文件中读取json字符串
         val json = context.assets.open("tab.json").bufferedReader().use { it.readText() }

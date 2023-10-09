@@ -23,4 +23,8 @@ class EmbeddedViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) 
     override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
+
+    fun getItem(position: Int): Fragment {
+        return fragments[position]
+    }
 }
