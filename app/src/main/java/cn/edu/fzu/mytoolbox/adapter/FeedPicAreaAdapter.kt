@@ -1,6 +1,5 @@
 package cn.edu.fzu.mytoolbox.adapter
 
-import android.os.Handler
 import android.widget.ImageView
 import cn.edu.fzu.mytoolbox.R
 import com.bumptech.glide.Glide
