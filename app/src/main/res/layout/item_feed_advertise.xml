@@ -7,23 +7,14 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
 
-    <cn.edu.fzu.mytoolbox.util.NestedScrollableHost
+    <com.youth.banner.Banner
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <cn.bingoogolapple.bgabanner.BGABanner
-            android:id="@+id/feedAdvertiseScroller"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:banner_aspectRatio="0.74"
-            app:banner_pageChangeDuration="500"
-            app:banner_pointAutoPlayAble="true"
-            app:banner_pointContainerBackground="@android:color/transparent"
-            app:banner_pointDrawable="@drawable/selector_feed_advertise_indicator"
-            app:banner_pointTopBottomMargin="8dp"
-            app:banner_transitionEffect="alpha"
-            />
-
-    </cn.edu.fzu.mytoolbox.util.NestedScrollableHost>
+        android:layout_height="200dp"
+        android:id="@+id/feedAdvertiseScroller"
+        app:banner_indicator_selected_color="@color/indicator_blue"
+        app:banner_indicator_normal_color="@color/text_secondary"
+        app:banner_indicator_marginBottom="20dp"
+        app:banner_indicator_normal_width="4dp"
+        app:banner_indicator_selected_width="4dp"/>
 
 </androidx.cardview.widget.CardView>

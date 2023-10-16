@@ -27,4 +27,10 @@ class EmbeddedViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) 
     fun getItem(position: Int): Fragment {
         return fragments[position]
     }
+
+    // 一个方法，用于返回指定位置的Fragment
+    fun getFragment(position: Int): Fragment {
+        // 从列表中获取对应位置的Fragment
+        return fragments[position]
+    }
 }

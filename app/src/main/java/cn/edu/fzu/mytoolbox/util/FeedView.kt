@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentActivity
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.adapter.EmbeddedViewPagerAdapter
 import cn.edu.fzu.mytoolbox.databinding.ViewFeedBinding
-import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData
 import cn.edu.fzu.mytoolbox.entity.GetFeedTabData.TAB_TYPE
 import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
@@ -41,6 +40,21 @@ class FeedView (context: Context, attrs: AttributeSet) :
         binding.feedViewPager.adapter = pagerAdapter
         // 设置ViewPager2的预加载数量，以避免每次切换都重新加载Fragment
         binding.feedViewPager.offscreenPageLimit = tabList.size
+
+        // 注册页面切换回调
+/*        binding.feedViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                // 获取当前显示的Fragment
+                val fragment = pagerAdapter.getFragment(position) as LazyFragment
+                // 判断Fragment是否可见
+                if (fragment.isResumed) {
+                    // 调用initData()和initEvent()方法
+                    fragment.initData()
+                    fragment.initEvent()
+                }
+            }
+        })*/
 
         val tabLayout = binding.feedTabLayout
         tabLayout.tabMode = TabLayout.MODE_SCROLLABLE

@@ -142,7 +142,7 @@ class MultiViewWaterfallFragment : LazyFragment(){
         }
 
         // 创建adapter的实例，并将回调函数作为参数传递给adapter的构造函数
-        val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf(), onFeedClickListener)
+        val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf(), onFeedClickListener,this@MultiViewWaterfallFragment)
         setupWaterfall(
             binding.rvFeedWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,

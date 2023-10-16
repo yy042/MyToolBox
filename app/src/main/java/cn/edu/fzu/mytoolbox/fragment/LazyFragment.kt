@@ -49,10 +49,10 @@ abstract class LazyFragment : Fragment(){
     /**
      * 初始化数据
      */
-    protected open fun initData() {}
+    open fun initData() {}
 
     /**
      * 初始化事件
      */
-    protected open fun initEvent() {}
+    open fun initEvent() {}
 }

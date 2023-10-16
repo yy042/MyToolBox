@@ -7,15 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cn.bingoogolapple.bgabanner.BGABanner
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
-import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean.PicAreaBean
-import cn.edu.fzu.mytoolbox.entity.ItemHorizontal
 import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
 import cn.edu.fzu.mytoolbox.util.MarqueeLayout
 import cn.edu.fzu.mytoolbox.util.dpToPx
@@ -24,10 +21,14 @@ import cn.edu.fzu.mytoolbox.util.setupRecyclerView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-
+import com.youth.banner.Banner
+import com.youth.banner.adapter.BannerImageAdapter
+import com.youth.banner.holder.BannerImageHolder
+import com.youth.banner.indicator.CircleIndicator
 
 class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
-                           val listener: MultiViewWaterfallFragment.OnFeedClickListener
+                           val listener: MultiViewWaterfallFragment.OnFeedClickListener,
+                           val lifecycleOwner: LifecycleOwner
 ) :
     BaseMultiItemQuickAdapter<FeedListBean, BaseViewHolder>(data){
 
@@ -74,32 +75,38 @@ class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
             }
             GetFeedListData.FEED_LIST_ITEM_TYPE.ADVERTISE.toInt()  -> {
                 // 处理广告类型的数据和视图
-                val banner=helper.getView<BGABanner>(R.id.feedAdvertiseScroller)
+                val banner=helper.getView<Banner<String, BannerImageAdapter<String>>>(R.id.feedAdvertiseScroller)
                 val adList=item.adLists
                 var picList= mutableListOf<String>()
                 for(ad in adList){
                     picList.add(ad.imageUrl)
                 }
-                // 设置轮播图的数据源，传入 picList，不需要传入提示文字列表
-                banner.setData(picList, null)
-                   // 设置轮播图的适配器，用于加载图片，这里使用Glide库作为示例
-                banner.setAdapter(BGABanner.Adapter<ImageView, String> { banner, itemView, model, position ->
-                    Glide.with(context).load(model).fitCenter().into(itemView)
-                })
-                // 设置滑动监听器
-                banner.setDelegate(object : BGABanner.Delegate<ImageView?, String?> {
-                    override fun onBannerItemClick(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
-                        // 处理点击事件
-                    }
+                banner.apply{
+                    addBannerLifecycleObserver(lifecycleOwner)
+                    setIndicator(CircleIndicator(context))
+                    scrollTime = 500
+                    setAdapter(object :BannerImageAdapter<String>(picList){
+                        override fun onBindView(
+                            holder: BannerImageHolder,
+                            data: String?,
+                            position: Int,
+                            size: Int
+                        ) {
+                            Glide.with(context).load(data).into(holder.imageView)
+                        }
 
-                    fun onBannerPageChanged(position: Int) {
-                        // 处理页面切换事件
-                    }
-                })
-                //设置是否允许用户手动滑动，默认是true
-                banner.setAllowUserScrollable(true)
+                    })
+                }
 
-                helper.itemView.isNestedScrollingEnabled=true
+                recyclerView.post{
+                    val itemWidth=helper.itemView.width
+                    val itemHeight=itemWidth * 212 / 157
+                    // 设置这个item的高度为根据宽高比算出的值
+                    helper.itemView.layoutParams.height=itemHeight
+                    // 设置banner的高度和item一致
+                    banner.layoutParams.height=itemHeight
+
+                }
 
             }
             GetFeedListData.FEED_LIST_ITEM_TYPE.RECHARGE.toInt()  -> {
