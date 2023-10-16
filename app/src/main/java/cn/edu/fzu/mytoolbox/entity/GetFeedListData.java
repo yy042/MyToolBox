@@ -69,7 +69,7 @@ public class GetFeedListData implements Serializable {
             }
         }
 
-        public static class PicAreaBean implements Serializable {
+        public static class PicAreaBean implements Serializable, MultiItemEntity{
             /**
              * commentList : 评论列表 [{"backgroundColor":"string","fontColor":"string","title":"string"}]
              * endTime : 直播结束时间（时间格式：yyyyMMddHHmmss）tring
@@ -129,6 +129,20 @@ public class GetFeedListData implements Serializable {
                 public String fontColor = "";
                 public String title = "";
             }
+
+            @Override
+            public int getItemType() {
+                switch (type) {
+                    case PICAREA_TYPE.ONE_IMAGE:
+                    case PICAREA_TYPE.MANY_IMAGE:{
+                        return parseInt(type);
+                    }
+                    default: {
+                        return parseInt(PICAREA_TYPE.ONE_IMAGE);
+                    }
+                }
+            }
+
         }
 
         public static class ContentAreaListBean implements Serializable, MultiItemEntity {

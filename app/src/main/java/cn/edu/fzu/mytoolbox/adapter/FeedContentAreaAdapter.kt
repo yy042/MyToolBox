@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.util.StrikeTextView
-import cn.edu.fzu.mytoolbox.util.Util
-import cn.edu.fzu.mytoolbox.util.Util.dpToPx
+import cn.edu.fzu.mytoolbox.util.dpToPx
+import cn.edu.fzu.mytoolbox.util.setupRecyclerView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -86,7 +86,7 @@ class FeedContentAreaAdapter(data: MutableList<GetFeedListData.FeedListBean.Cont
             GetFeedListData.CONTENTAREA_TYPE.SALE_TIP.toInt() -> {
                 // 设置SaleTip列表
                 val rvSaleTipAdapter= RvSaleTipAdapter(R.layout.item_feed_content_sale_tip,mutableListOf())
-                Util.setupRecyclerView(
+                setupRecyclerView(
                     holder.getView<RecyclerView>(R.id.rvFeedContentSaleTip),
                     rvSaleTipAdapter,
                     item.saleTipList,

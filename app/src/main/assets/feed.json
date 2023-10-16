@@ -206,16 +206,103 @@
         },
         {
             "type": "1",
-            "externalOfferCode": "3196100028",
-            "firstSecondThreeClass": "108##109##227",
-            "link": "https%3A%2F%2Fah.189.cn%2Fiphone%2Fext%2Fxk29tc%2Findex.html%3FbyChannel%3Dhg-m-feed%26DevCode%3DCWWTAH011%26shopid%3D65701%26cmpid%3Dpro_hg_ah_Syjh-sjsy-feed-1_xk%26ticket%3D%24ticket%24",
-            "linkType": "5",
+            "externalOfferCode": "3474700001",
+            "firstSecondThreeClass": "108##109##115",
+            "link": "https://www.189.cn/images/client/commonupload/2019/2/21/83718/wuyouka/index.html?cmpid=sy-feed-wuyouka&shopid=189.WAP.hk-wuyouka-2137",
+            "linkType": "2",
             "title": "",
-            "provinceCode": "600301",
-            "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-2.eoc-3196100028",
-            "sceneId": "hg_sy_feedtg##100001##default##3196100028##010001002000##3##N##1##2##N##N##31961",
-            "picArea": null,
-            "contentAreaList": null,
+            "provinceCode": "1000000037",
+            "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-14.eoc-3474700001",
+            "sceneId": "hg_sy_feedtg##100001##default##3474700001##010001002000##3##N##1##14##N##N##34747",
+            "picArea": {
+                "imageUrl": "https://w.189.cn/bigdata/2023/1/10/111654653571198732.png",
+                "imageRatio": "1.000",
+                "playType": null,
+                "videoStreamUrl": null,
+                "videoStreamUrlType": null,
+                "startTime": null,
+                "endTime": null,
+                "videoCommerceId": null,
+                "topImage": null,
+                "topImageBeforeLive": null,
+                "topImageLiving": null,
+                "videoDuration": null,
+                "type": "1",
+                "stock": null,
+                "link": "https://www.189.cn/images/client/commonupload/2019/2/21/83718/wuyouka/index.html?cmpid=sy-feed-wuyouka&shopid=189.WAP.hk-wuyouka-2137",
+                "linkType": "2",
+                "title": "无忧卡",
+                "provinceCode": "1000000037",
+                "recommender": "cc-010001002000.rmc-hg_sy_feedtg.fd-2.od-14.eoc-3474700001",
+                "sceneId": "hg_sy_feedtg##100001##default##3474700001##010001002000##3##N##1##14##N##N##34747",
+                "commentList": null,
+                "picList": []
+            },
+            "contentAreaList": [
+                {
+                    "type": "1",
+                    "mainTitle": {
+                        "title": "【无忧卡】月租仅5元，第二卡槽必备",
+                        "color": "",
+                        "type": "2"
+                    },
+                    "saleTipList": null,
+                    "price": null,
+                    "location": null,
+                    "countDown": null,
+                    "numText": null,
+                    "picList": null,
+                    "completionInfo": null
+                },
+                {
+                    "type": "2",
+                    "mainTitle": null,
+                    "saleTipList": [
+                        {
+                            "title": "200MB流量",
+                            "fontColor": "",
+                            "frameColor": "",
+                            "imageUrl": "",
+                            "type": "1"
+                        },
+                        {
+                            "title": "接听免费",
+                            "fontColor": "",
+                            "frameColor": "",
+                            "imageUrl": "",
+                            "type": "1"
+                        }
+                    ],
+                    "price": null,
+                    "location": null,
+                    "countDown": null,
+                    "numText": null,
+                    "picList": null,
+                    "completionInfo": null
+                },
+                {
+                    "type": "4",
+                    "mainTitle": null,
+                    "saleTipList": null,
+                    "price": {
+                        "isShowPriceUnit": "1",
+                        "priceInteger": "19",
+                        "priceDecimal": "/月",
+                        "priceColor": "",
+                        "originalPrice": "¥23.9/月",
+                        "originalPriceColor": "",
+                        "isOriginalPriceLine": "1"
+                    },
+                    "location": {
+                        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAATCAYAAAB2pebxAAAB+UlEQVQ4jW2TP2gUURDGvy9cgqQUBLs70EJERLA1jSaVoCCIYKeGKFiJoI2ClSkCNgppxMLSJgQD2phCJYhiYWVjoZBKrc8/uPOTt/t27/Zut9h57828b775Zp7j3mkJCZStDwqtgJaED4F6QrvgHaEnhF9VsS7vEFIv/coP7wGtCV0D95QDwAl8AB4IXSS0Db4s9C35SpCcfU7oOWixzjCeqXUWOgl+J7QA+kJYM+lH6CHhxbxW247OYuTbT3iTwvMVCD4mvFxlrS+5A2gK8DDhG2k/Q2iF8EwHi3+EN4hSzJ/lWTEFeCnZHuGlrEuuv1wXQqcIv85a7AO9JzRotEqChw6A+4lJv4P6TiSAEbMfhJ9OlVUl7icmhfDsRCfmc6YqsJqh2XS5Zl3PFvh30uJzh4DHKXRljOERwle7OqfQ1wTyojwopgIeE/5E+A2hj4T30sxOXY4+gL8nTdYjPOxurY4SPqHwXIttI6xXc4u9S+j2lLh0Us+29G+BNpKGeT78iNBaJ1DT0tb6rcIX6n2veWShW+A/QnfG385kNyRtC58BDfPTLYetclb2rvAQdL91uXzlJfBLpHNCv2qA9NXljNNdBd0E02Qv/d4EnZ0EyCA5qC3cA0LXSTAV8DOh85L+TgI05YzqHekgvI6UNFqQtCyp6AKQpP8IvUlBPosLoAAAAABJRU5ErkJggg==",
+                        "title": "河北省 石家庄市"
+                    },
+                    "countDown": null,
+                    "numText": null,
+                    "picList": null,
+                    "completionInfo": null
+                }
+            ],
             "adLists": null,
             "quickRecharge": null
         },

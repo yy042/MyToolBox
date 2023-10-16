@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.util.Util.setupWaterfall
+import cn.edu.fzu.mytoolbox.util.setupWaterfall
 import cn.edu.fzu.mytoolbox.adapter.RvWaterfallAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentWaterfallBinding
 import cn.edu.fzu.mytoolbox.entity.ItemWaterfall

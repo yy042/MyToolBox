@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.bingoogolapple.bgabanner.BGABanner
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.RechargeSuccessActivity
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
+import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean.PicAreaBean
+import cn.edu.fzu.mytoolbox.entity.ItemHorizontal
 import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
-import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.MarqueeLayout
-import cn.edu.fzu.mytoolbox.util.Util.dpToPx
-import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
+import cn.edu.fzu.mytoolbox.util.dpToPx
+import cn.edu.fzu.mytoolbox.util.setupGridRecyclerView
+import cn.edu.fzu.mytoolbox.util.setupRecyclerView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -121,23 +122,16 @@ class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
             GetFeedListData.FEED_ADAPTER_ITEM_TYPE.ONE_IMAGE -> {
                 // 处理单图类型的数据和视图
                 // 单图
-                helper.setVisible(R.id.ivFeedPic1,true)
-                helper.setGone(R.id.ivFeedPic2,true)
-                helper.setGone(R.id.ivFeedPic3,true)
-                helper.setGone(R.id.ivFeedPic4,true)
-
-                // 加载单图图片到单图视图中
-                Glide.with(context).load(item.picArea.imageUrl).into(helper.getView(R.id.ivFeedPic1))
-
-                // 根据图片宽高比计算单图视图的高度，并设置给LayoutParams
-                recyclerView.post{
-                    val width = helper.getView<ImageView>(R.id.ivFeedPic1).width // 获取单图视图的宽度（锁宽）
-                    val height = (width / item.picArea.imageRatio.toDouble()).toInt() // 根据宽高比计算高度（等比缩放）
-                    val params = helper.getView<ImageView>(R.id.ivFeedPic1).layoutParams as ConstraintLayout.LayoutParams // 获取单图视图的LayoutParams
-                    params.height = height // 设置高度
-
-                    //helper.setText(R.id.rvFeedContentArea, ""+height)
-                }
+                val rvGridAdapter = FeedPicAreaAdapter(R.layout.item_feed_pic_area_one_image, mutableListOf())
+                val urlList: List<String> = listOf(item.picArea.imageUrl)
+                setupGridRecyclerView(
+                    helper.getView(R.id.rvFeedPicArea), //传入recyclerView对象
+                    rvGridAdapter,
+                    urlList,
+                    1,
+                    0f,
+                    RecyclerView.VERTICAL
+                )
 
                 // 处理topImage
                 if(item.picArea.topImage.isNullOrBlank()){
@@ -182,50 +176,21 @@ class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
                 // 处理多图类型的数据和视图
                 // 主图区的处理
                 // 根据图片列表的数量来决定是2图样式还是4图样式，并加载相应的图片到多图视图中
-                when (item.picArea.picList.size){
-                    1 -> {
-                        // 单图
-                        helper.setVisible(R.id.ivFeedPic1,true)
-                        helper.setGone(R.id.ivFeedPic2,true)
-                        helper.setGone(R.id.ivFeedPic3,true)
-                        helper.setGone(R.id.ivFeedPic4,true)
-
-                        // 加载单图图片到单图视图中
-                        Glide.with(context).load(item.picArea.imageUrl).fitCenter().into(helper.getView(R.id.ivFeedPic1))
-
-                        // 根据图片宽高比计算单图视图的高度，并设置给LayoutParams
-                        recyclerView.post{
-                            val width = helper.getView<ImageView>(R.id.ivFeedPic1).width // 获取单图视图的宽度（锁宽）
-                            val height = (width / item.picArea.imageRatio.toDouble()).toInt() // 根据宽高比计算高度（等比缩放）
-                            val params = helper.getView<ImageView>(R.id.ivFeedPic1).layoutParams as ConstraintLayout.LayoutParams // 获取单图视图的LayoutParams
-                            params.height = height // 设置高度
-                        }
-
-                    }
-                    in 2..3 -> { // 2图样式
-                        helper.setVisible(R.id.ivFeedPic1, true) // 显示第一个图片视图
-                        helper.setVisible(R.id.ivFeedPic2, true) // 显示第二个图片视图
-                        helper.setGone(R.id.ivFeedPic3,true)
-                        helper.setGone(R.id.ivFeedPic4,true)
-
-                        // 加载图片列表中的前两个图片到对应的图片视图中
-                        Glide.with(context).load(item.picArea.picList[0].imageUrl).into(helper.getView(R.id.ivFeedPic1))
-                        Glide.with(context).load(item.picArea.picList[1].imageUrl).into(helper.getView(R.id.ivFeedPic2))
-                    }
-                    else -> { // 4图样式
-                        helper.setVisible(R.id.ivFeedPic1, true) // 显示第一个图片视图
-                        helper.setVisible(R.id.ivFeedPic2, true) // 显示第二个图片视图
-                        helper.setVisible(R.id.ivFeedPic3, true) // 显示第三个图片视图
-                        helper.setVisible(R.id.ivFeedPic4, true) // 显示第四个图片视图
-
-                        // 加载图片列表中的前四个图片到对应的图片视图中
-                        Glide.with(context).load(item.picArea.picList[0].imageUrl).into(helper.getView(R.id.ivFeedPic1))
-                        Glide.with(context).load(item.picArea.picList[1].imageUrl).into(helper.getView(R.id.ivFeedPic2))
-                        Glide.with(context).load(item.picArea.picList[2].imageUrl).into(helper.getView(R.id.ivFeedPic3))
-                        Glide.with(context).load(item.picArea.picList[3].imageUrl).into(helper.getView(R.id.ivFeedPic4))
-                    }
-
+                val rvGridAdapter = FeedPicAreaAdapter(R.layout.item_feed_pic_area_one_image, mutableListOf())
+                val urlList: List<String> = item.picArea.picList.map { it.imageUrl }
+                val itemCount = if (urlList.size < 4) {
+                    2
+                } else {
+                    4
                 }
+                setupGridRecyclerView(
+                    helper.getView(R.id.rvFeedPicArea), //传入recyclerView对象
+                    rvGridAdapter,
+                    urlList.subList(0, itemCount),
+                    2,
+                    0f,
+                    RecyclerView.VERTICAL
+                )
                 /* val position = helper.adapterPosition
                  helper.setText(R.id.rvFeedContentArea, "第${position + 1}个item,图片个数是${item.picArea.picList.size}")*/
 
@@ -272,15 +237,8 @@ class FeedWaterfallAdapter(data: MutableList<FeedListBean>,
             }
             GetFeedListData.FEED_ADAPTER_ITEM_TYPE.NULL -> {
                 // 处理无主图区类型的数据和视图
-                // 纯文字无图区的item
-                helper.setGone(R.id.ivFeedPic1,true)
-                helper.setGone(R.id.ivFeedPic2,true)
-                helper.setGone(R.id.ivFeedPic3,true)
-                helper.setGone(R.id.ivFeedPic4,true)
-                helper.setGone(R.id.marqueeFeedCommentList,true)
+                // 隐藏库存标签
                 helper.setGone(R.id.tvFeedStock,true)
-
-
                 // 文字区的处理
                 if(item.contentAreaList.isNullOrEmpty()){
                     helper.setGone(R.id.rvFeedContentArea,true)

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
+import cn.edu.fzu.mytoolbox.util.setupRecyclerView
 import cn.edu.fzu.mytoolbox.adapter.RvHorizontalAdapter
 import cn.edu.fzu.mytoolbox.adapter.RvVerticalAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentRecyclerViewBinding

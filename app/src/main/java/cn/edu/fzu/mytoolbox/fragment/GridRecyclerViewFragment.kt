@@ -1,16 +1,16 @@
 package cn.edu.fzu.mytoolbox.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.util.Util
 import cn.edu.fzu.mytoolbox.adapter.RvGridAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentGridRecyclerViewBinding
 import cn.edu.fzu.mytoolbox.entity.ItemHorizontal
+import cn.edu.fzu.mytoolbox.util.setupGridRecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,7 +46,7 @@ class GridRecyclerViewFragment : Fragment() {
     ): View? {
         _binding=FragmentGridRecyclerViewBinding.inflate(inflater,container,false)
         var rvGridAdapter = RvGridAdapter(R.layout.item_grid, mutableListOf())
-        Util.setupGridRecyclerView(
+        setupGridRecyclerView(
             binding.rvGrid, //传入recyclerView对象
             rvGridAdapter,
             listOf( //传入数据列表

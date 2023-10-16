@@ -14,17 +14,14 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import cn.edu.fzu.mytoolbox.R
-import cn.edu.fzu.mytoolbox.RechargeSuccessActivity.Companion.REQUEST_CODE_PICK_CONTACT
 import cn.edu.fzu.mytoolbox.adapter.FeedWaterfallAdapter
 import cn.edu.fzu.mytoolbox.databinding.FragmentMultiViewWaterfallBinding
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData
 import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
-import cn.edu.fzu.mytoolbox.util.FeedView
-import cn.edu.fzu.mytoolbox.util.Util
+import cn.edu.fzu.mytoolbox.util.setupWaterfall
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.gson.Gson
 
@@ -38,7 +35,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MultiViewWaterfallFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MultiViewWaterfallFragment : Fragment(){
+class MultiViewWaterfallFragment : LazyFragment(){
 
     private var _binding: FragmentMultiViewWaterfallBinding? = null
     // This property is only valid between onCreateView and
@@ -50,8 +47,6 @@ class MultiViewWaterfallFragment : Fragment(){
         // 定义一个方法，用于传递feed和position
         fun onFeedClick(feed: FeedListBean, position: Int)
     }
-    // 在fragment中创建一个OnFeedClickListener类型的变量
-    var onFeedClickListener: OnFeedClickListener? = null
 
     // 在fragment中创建一个ActivityResultLauncher类型的变量
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
@@ -71,6 +66,7 @@ class MultiViewWaterfallFragment : Fragment(){
             param2 = it.getString(ARG_PARAM2)
         }
 
+        // 请求使用通讯录权限
         requestPermissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
                 if (isGranted) {
@@ -82,6 +78,7 @@ class MultiViewWaterfallFragment : Fragment(){
                 }
             }
 
+        // 处理从通讯录页面选号码后跳转回来的操作
         // 使用ActivityResultContracts.StartActivityForResult契约和一个回调函数来初始化这个变量
         contactPickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
@@ -91,9 +88,17 @@ class MultiViewWaterfallFragment : Fragment(){
                     if (cursor.moveToNext()){
                         val index = it.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
                         val number = it.getString(index)
-                        // 在这里执行后续的操作，例如将号码显示到TextView中
-                        val holder = binding.rvFeedWaterfall.findViewHolderForAdapterPosition(position) as BaseViewHolder // 获取对应position的holder
-                        holder.getView<TextView>(R.id.tvFeedQuickRechargeNumber).text = number // 将号码设置到TextView中
+                        // 判断手机号的格式是否为11位
+                        if (number.length == 11) {
+                            // 如果是正确的格式，将手机号的格式转换为“XXX **** XXX”并显示出来
+                            val formattedNumber = number.substring(0, 3) + " **** " + number.substring(7, 11)
+                            // 在这里执行后续的操作，例如将号码显示到TextView中
+                            val holder = binding.rvFeedWaterfall.findViewHolderForAdapterPosition(position) as BaseViewHolder // 获取对应position的holder
+                            holder.getView<TextView>(R.id.tvFeedQuickRechargeNumber).text = formattedNumber // 将号码设置到TextView中
+                        } else {
+                            // 如果不是正确的格式，提示手机号无效之类的信息
+                            Toast.makeText(requireContext(), "手机号无效，请重新选择", Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                 }
@@ -104,15 +109,21 @@ class MultiViewWaterfallFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding= FragmentMultiViewWaterfallBinding.inflate(inflater,container,false)
 
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    override fun initData() {
+        super.initData()
         // 从本地json文件中读取json字符串
         val json = requireActivity().assets.open("feed.json").bufferedReader().use { it.readText() }
         // 使用Gson对象将json字符串转换为TabListBean对象列表
         val gson = Gson()
         val GetFeedListData = gson.fromJson(json, GetFeedListData::class.java)
-        val feedList: List<GetFeedListData.FeedListBean> = GetFeedListData.feedList
+        val feedList: List<FeedListBean> = GetFeedListData.feedList
 
         // 创建一个回调函数的实例
         val onFeedClickListener = object : OnFeedClickListener {
@@ -132,7 +143,7 @@ class MultiViewWaterfallFragment : Fragment(){
 
         // 创建adapter的实例，并将回调函数作为参数传递给adapter的构造函数
         val rvWaterfallAdapter= FeedWaterfallAdapter(mutableListOf(), onFeedClickListener)
-        Util.setupWaterfall(
+        setupWaterfall(
             binding.rvFeedWaterfall, //传入recyclerView对象
             rvWaterfallAdapter,
             feedList
@@ -140,8 +151,11 @@ class MultiViewWaterfallFragment : Fragment(){
 
         binding.rvFeedWaterfall.isNestedScrollingEnabled=true
 
-        // Inflate the layout for this fragment
-        return binding.root
+
+    }
+
+    override fun getContentViewId(): Int {
+        return R.layout.fragment_multi_view_waterfall
     }
 
 

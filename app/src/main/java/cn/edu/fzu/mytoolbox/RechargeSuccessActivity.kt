@@ -1,37 +1,25 @@
 package cn.edu.fzu.mytoolbox
 
-import android.Manifest
-import android.app.Activity
 import android.app.Dialog
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import cn.edu.fzu.mytoolbox.adapter.*
 import cn.edu.fzu.mytoolbox.databinding.ActivityRechargeSuccessBinding
-import cn.edu.fzu.mytoolbox.entity.GetFeedListData.FeedListBean
 import cn.edu.fzu.mytoolbox.entity.ItemRecommend
 import cn.edu.fzu.mytoolbox.entity.ItemService
 import cn.edu.fzu.mytoolbox.entity.ItemTask
-import cn.edu.fzu.mytoolbox.fragment.MultiViewWaterfallFragment
-import cn.edu.fzu.mytoolbox.util.FeedView
 import cn.edu.fzu.mytoolbox.util.ImmersiveToolbar
-import cn.edu.fzu.mytoolbox.util.Util.dpToPx
-import cn.edu.fzu.mytoolbox.util.Util.setupRecyclerView
-import cn.edu.fzu.mytoolbox.util.Util.setupSpacingRecyclerView
+import cn.edu.fzu.mytoolbox.util.dpToPx
+import cn.edu.fzu.mytoolbox.util.setupRecyclerView
+import cn.edu.fzu.mytoolbox.util.setupSpacingRecyclerView
 
 class RechargeSuccessActivity : AppCompatActivity() {
 
@@ -43,9 +31,6 @@ class RechargeSuccessActivity : AppCompatActivity() {
     private lateinit var rvRecommendAdapter: RvRecommendsAdapter
     private lateinit var rvCardAdapter: RvCardsAdapter
     private lateinit var rvWaterfallAdapter: RvWaterfallAdapter
-
-    private lateinit var viewPager: ViewPager2
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,8 +149,12 @@ class RechargeSuccessActivity : AppCompatActivity() {
         }
         binding.layoutMarqueeHint.setViewList(views)
 
-        viewPager=binding.layoutFeed.findViewById(R.id.feedViewPager)
-
+        binding.refreshLayoutRechargeMain.setOnRefreshListener {
+            it.finishRefresh(2000)
+        }
+        binding.refreshLayoutRechargeMain.setOnLoadMoreListener {
+            it.finishLoadMore(2000)
+        }
         //设置textSwitcher
     /*    // 创建一个数据列表
         val messages = listOf(

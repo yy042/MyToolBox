@@ -10,7 +10,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import cn.edu.fzu.mytoolbox.R
 import cn.edu.fzu.mytoolbox.databinding.ImmersiveToolbarBinding
-import cn.edu.fzu.mytoolbox.util.Util.dpToPx
+import cn.edu.fzu.mytoolbox.util.dpToPx
 import com.gyf.immersionbar.ImmersionBar
 
 // 定义一个自定义标题栏View类，继承自Toolbar
