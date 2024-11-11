@@ -31,8 +31,3 @@ This project contains a collection of components developed during my internship,
 ## Screenshots
 ![pintu-fulicat com-1731294914181](https://github.com/user-attachments/assets/cde070cb-0da2-4cb1-bcd2-2047116082b5)
 
-
-### Prerequisites
-- Android Studio (latest stable version)
-- Android SDK (compatible with your project’s minimum SDK version)
-- Kotlin
