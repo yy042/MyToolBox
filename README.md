@@ -29,13 +29,7 @@ This project contains a collection of components developed during my internship,
    - A waterfall flow layout for displaying messages or notifications in a smooth, cascading manner. This is used to show multiple updates or information in an engaging and readable format.
 
 ## Screenshots
-![Screenshot_20241111_140859](https://github.com/user-attachments/assets/9337549b-2880-450e-b5e8-d7728859616b)
-![Screenshot_20241111_140832](https://github.com/user-attachments/assets/9fc0b5eb-e3fc-4190-b33a-715730edb0e2)
-![Screenshot_20241111_140911](https://github.com/user-attachments/assets/2e1ee8ec-c2bb-4572-854c-7c0203cec2d4)
-![Screenshot_20241111_140921](https://github.com/user-attachments/assets/c6401bd5-9c65-43e7-892e-1d7cdd5dc46f)
-![Screenshot_20241111_140954](https://github.com/user-attachments/assets/92a23143-7af9-4d41-b496-e6eaa2a1bba1)
-![Screenshot_20241111_141005](https://github.com/user-attachments/assets/7821d17e-9a40-4fc6-8992-b93aa2f3803d)
-![Screenshot_20241111_141145](https://github.com/user-attachments/assets/63f2c683-ea49-4676-a308-128e7d8b4a24)
+![pintu-fulicat com-1731294914181](https://github.com/user-attachments/assets/cde070cb-0da2-4cb1-bcd2-2047116082b5)
 
 
 ### Prerequisites
