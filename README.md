@@ -1,4 +1,4 @@
-# MyToolBox - custom Components
+# MyToolBox - A Collection of Custom Components
 
 This project contains a collection of components developed during my internship, which were used in the **China Telecom Mobile Business Hall App** for the recharge service pages. These components are designed to enhance the user experience with dynamic and interactive UI elements in Android native development.
 
